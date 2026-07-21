@@ -1,7 +1,25 @@
 {
+<<<<<<< HEAD
   "functions": {
     "*.php": {
       "runtime": "vercel-php@0.7.3"
+=======
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+>>>>>>> 68d1d3f25f1b1081e035838736d47d0fd48a8c0e
     }
   },
   "rewrites": [
