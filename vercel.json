@@ -1,15 +1,10 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "app.py",
-      "use": "@vercel/python"
+  "functions": {
+    "*.php": {
+      "runtime": "vercel-php@0.7.3"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "app.py"
-    }
+  },
+  "rewrites": [
+    { "source": "/project/(?<id>\\d+)", "destination": "/project.php?id=$id" }
   ]
 }
