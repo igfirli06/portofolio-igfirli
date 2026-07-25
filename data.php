@@ -126,6 +126,27 @@ function getPortfolioData(): array
                 'decision' => null,
                 'branches' => null,
             ],
+            [
+                'title' => 'Structured Log Parser',
+                'tech' => 'Python, PyParsing',
+                'desc' => 'Sistem pengekstrak teks (parser) berbasis Python untuk membaca dan mengekstrak baris log dari server menjadi format terstruktur (Dictionary/JSON) menggunakan pendekatan Parsing Expression Grammar (PEG).',
+                'url' => '#',
+                'github' => '#',
+                'pipeline' => [
+                    ['step' => '01', 'label' => 'Input Log Line', 'sub' => 'Menerima baris log mentah'],
+                    ['step' => '02', 'label' => 'Grammar Matching', 'sub' => 'Evaluasi prioritas dan key-value'],
+                    ['step' => '03', 'label' => 'Tokenization', 'sub' => 'Memecah string berdasarkan aturan PyParsing'],
+                    ['step' => '04', 'label' => 'Dictionary Mapping', 'sub' => 'Menyusun token ke dalam key-value Python'],
+                ],
+                'decision' => [
+                    'label' => 'Parsing Validation (Try-Except)',
+                    'formula' => 'Match(logLine) == True',
+                ],
+                'branches' => [
+                    ['cond' => 'Format Valid', 'result' => 'Return Dictionary Data', 'type' => 'yes'],
+                    ['cond' => 'Format Invalid', 'result' => 'Return Error Line', 'type' => 'no'],
+                ],
+            ],
         ],
     ];
 }
