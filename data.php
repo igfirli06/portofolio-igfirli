@@ -10,20 +10,23 @@ function getPortfolioData(): array
             . ' pengembangan web fullstack serta berfokus pada bahasa pemrograman'
             . ' python.',
         'skills' => [
-            'Backend & Database' => [
-                'PHP',
-                'MySQL',
-                'PostgreSQL',
-                'REST API',
-                'Python (Flask)',
-            ],
-            'Frontend' => ['HTML5', 'CSS3', 'Tailwind CSS', 'JavaScript'],
-            'Tools & Others' => [
-                'Git/GitHub',
-                'VS Code',
-                'Postman',
-                'Figma',
+            'AI & Computer Vision' => [
                 'OpenCV',
+                'YOLO',
+                'Scikit-Learn (KNN)',
+                'NumPy / Pandas'
+            ],
+        'Cloud & Tools' => [
+            'AWS (EC2 / Boto3)',
+            'Git/GitHub',
+            'VS Code',
+            'Postman'
+            ],
+            'Backend & Database' => [
+                'Python (Flask)',
+                'PostgreSQL',
+                'SQLAlchemy',
+                'REST API'
             ],
         ],
         'projects' => [
