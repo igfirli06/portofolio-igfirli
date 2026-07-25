@@ -21,7 +21,6 @@ $data = getPortfolioData();
         }
 
         .hero-bg {
-            /* Pastikan nama file gambar tetap sesuai atau ganti jika Anda punya gambar baru */
             background-image: url("static/fullstcak.png");
             background-blend-mode: multiply;
         }
@@ -52,7 +51,6 @@ $data = getPortfolioData();
             </h1>
 
             <div class="bg-white border-4 border-black p-4 brutal-shadow -rotate-1 inline-block mb-8">
-                <!-- Fokus diubah ke Python Developer di sini -->
                 <p class="text-xl md:text-2xl font-bold text-black uppercase">
                     [ Python Developer ]
                 </p>
@@ -111,7 +109,7 @@ $data = getPortfolioData();
                     if ($i == 1) echo 'bg-[#335c67] text-white';
                     elseif ($i == 2) echo 'bg-white text-black';
                     else echo 'bg-[#9e2a2b] text-[#fff3b0]';
-                ?>">
+                ?> flex flex-col h-full">
                     <h3 class="text-2xl font-black uppercase mb-4 border-b-2 border-black pb-2 tracking-tight">
                         <?= htmlspecialchars($category) ?>
                     </h3>
@@ -128,23 +126,28 @@ $data = getPortfolioData();
             </div>
         </section>
 
-<section class="space-y-8">
+        <section class="space-y-8">
             <div class="inline-block bg-[#540b0e] border-4 border-black p-4 brutal-shadow -rotate-1">
                 <h2 class="text-3xl font-black text-[#fff3b0] uppercase tracking-tight">
                     PRODUCTION CODE
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Bagian Grid Production Code -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                 <?php foreach ($data['projects'] as $project): ?>
-                <div class="border-4 border-black brutal-shadow p-6 bg-white text-black h-full flex flex-col">
+                
+                <!-- Hapus class mb-8 dan tambahkan h-full, flex, flex-col agar tingginya sejajar -->
+                <div class="border-4 border-black brutal-shadow p-6 bg-white text-black flex flex-col h-full">
                     <h3 class="text-2xl font-black uppercase mb-2"><?= htmlspecialchars($project['title']) ?></h3>
                     <p class="text-sm font-bold text-[#e09f3e] mb-4 uppercase tracking-widest"><?= htmlspecialchars($project['tech']) ?></p>
-                    <p class="font-medium mb-6"><?= htmlspecialchars($project['desc']) ?></p>
+                    
+                    <!-- Tambahkan flex-grow pada deskripsi agar otomatis mendorong konten di bawahnya (bila ada) ke paling dasar kotak -->
+                    <p class="font-medium mb-6 <?= empty($project['pipeline']) ? 'flex-grow' : '' ?>"><?= htmlspecialchars($project['desc']) ?></p>
 
                     <!-- Cek apakah project memiliki Pipeline AI -->
                     <?php if (!empty($project['pipeline'])): ?>
-                        <div class="mt-4 border-t-4 border-black pt-6">
+                        <div class="mt-auto border-t-4 border-black pt-6">
                             <div class="inline-block bg-black text-white px-3 py-1 font-bold uppercase tracking-widest text-sm mb-6">
                                 AI Processing Pipeline
                             </div>
@@ -196,6 +199,7 @@ $data = getPortfolioData();
                             </div>
                         </div>
                     <?php endif; ?>
+                    
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -218,9 +222,8 @@ $data = getPortfolioData();
             </a>
             <a href="https://instagram.com/belajar_bersamal1l1" target="_blank" class="p-2 bg-[#9e2a2b] border-2 border-black brutal-shadow-sm text-[#fff3b0] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583 0.07-4.849 0.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
-            </div>
+                </svg>
+            </a>
         </div>
     </footer>
 
