@@ -133,19 +133,22 @@ $data = getPortfolioData();
                 </h2>
             </div>
 
-            <!-- Menggunakan items-stretch agar tinggi card sama rata, dan flex flex-col di dalam card -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                 <?php foreach ($data['projects'] as $project): ?>
                 <div class="border-4 border-black brutal-shadow p-6 bg-white text-black flex flex-col h-full">
-                    <h3 class="text-2xl font-black uppercase mb-2"><?= htmlspecialchars($project['title']) ?></h3>
-                    <p class="text-sm font-bold text-[#e09f3e] mb-4 uppercase tracking-widest"><?= htmlspecialchars($project['tech']) ?></p>
                     
-                    <p class="font-medium mb-6"><?= htmlspecialchars($project['desc']) ?></p>
+                    <!-- Bagian Header Kartu (Judul, Tech, Desc) dibungkus agar tingginya seragam & rapi -->
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-2 leading-tight"><?= htmlspecialchars($project['title']) ?></h3>
+                        <p class="text-sm font-bold text-[#e09f3e] mb-4 uppercase tracking-widest"><?= htmlspecialchars($project['tech']) ?></p>
+                        
+                        <p class="font-medium mb-6"><?= htmlspecialchars($project['desc']) ?></p>
 
-                    <!-- Divider horizontal pemisah -->
-                    <hr class="border-2 border-black mb-6">
+                        <!-- Divider horizontal pemisah -->
+                        <hr class="border-2 border-black mb-6">
+                    </div>
 
-                    <!-- Cek apakah project memiliki Pipeline AI (mt-auto memaksa bagian ini turun sejajar di dasar kartu) -->
+                    <!-- Bagian Pipeline AI (mt-auto memastikan bagian ini otomatis terdorong ke bawah secara presisi) -->
                     <?php if (!empty($project['pipeline'])): ?>
                         <div class="mt-auto border-t-4 border-black pt-6">
                             <div class="inline-block bg-black text-white px-3 py-1 font-bold uppercase tracking-widest text-sm mb-6">
