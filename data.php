@@ -16,14 +16,14 @@ function getPortfolioData(): array
                 'Scikit-Learn (KNN)',
                 'NumPy / Pandas'
             ],
-        'Cloud & Tools' => [
-            'AWS (EC2 / Boto3)',
-            'Git/GitHub',
-            'VS Code',
-            'Postman'
+            'Cloud & Tools' => [
+                'AWS (EC2 / Boto3)',
+                'Git/GitHub',
+                'VS Code',
+                'Postman'
             ],
             'Backend & Database' => [
-                'Python (Flask)',
+                'Python (Flask & FastAPI)',
                 'PostgreSQL',
                 'SQLAlchemy',
                 'REST API'
@@ -55,55 +55,65 @@ function getPortfolioData(): array
                 ],
             ],
             [
-    'title' => 'PEOPLE DETECTION MONITORING',
-    'tech' => 'PYTHON, MACHINE VISION, YOLOv8, MYSQL, FLASK',
-    'desc' => 'Sistem pemantauan keamanan karyawan untuk area zona khusus di PT. Kutai Timber Indonesia dengan pencatatan dan dashboard real-time.',
-    'pipeline' => [
-        [
-            'step' => '01',
-            'label' => 'INPUT STREAM (RTSP)',
-            'sub' => 'Kamera mengirim stream video'
-        ],
-        [
-            'step' => '02',
-            'label' => 'YOLOv8 TRACKING',
-            'sub' => 'Deteksi tracking_id dalam poligon'
-        ],
-        [
-            'step' => '03',
-            'label' => 'MYSQL LOGGING',
-            'sub' => 'Pencatatan kejadian & zona'
-        ]
-    ],
-    'decision' => [
-        'label' => 'FLASK REAL-TIME DASHBOARD',
-        'formula' => 'Render Video Anotasi + Tabel Event'
-    ],
-    'branches' => [
-        [
-            'cond' => 'STATUS KARYAWAN',
-            'type' => 'yes',
-            'result' => 'MASUK / TERCATAT'
-        ],
-        [
-            'cond' => 'KONDISI ZONA',
-            'type' => 'no',
-            'result' => 'AMAN / KOSONG'
-        ]
-    ]
-],
+                'title' => 'PEOPLE DETECTION MONITORING',
+                'tech' => 'PYTHON, MACHINE VISION, YOLOv8, MYSQL, FLASK',
+                'desc' => 'Sistem pemantauan keamanan karyawan untuk area zona khusus di PT. Kutai Timber Indonesia dengan pencatatan dan dashboard real-time.',
+                'pipeline' => [
+                    [
+                        'step' => '01',
+                        'label' => 'INPUT STREAM (RTSP)',
+                        'sub' => 'Kamera mengirim stream video'
+                    ],
+                    [
+                        'step' => '02',
+                        'label' => 'YOLOv8 TRACKING',
+                        'sub' => 'Deteksi tracking_id dalam poligon'
+                    ],
+                    [
+                        'step' => '03',
+                        'label' => 'MYSQL LOGGING',
+                        'sub' => 'Pencatatan kejadian & zona'
+                    ]
+                ],
+                'decision' => [
+                    'label' => 'FLASK REAL-TIME DASHBOARD',
+                    'formula' => 'Render Video Anotasi + Tabel Event'
+                ],
+                'branches' => [
+                    [
+                        'cond' => 'STATUS KARYAWAN',
+                        'type' => 'yes',
+                        'result' => 'MASUK / TERCATAT'
+                    ],
+                    [
+                        'cond' => 'KONDISI ZONA',
+                        'type' => 'no',
+                        'result' => 'AMAN / KOSONG'
+                    ]
+                ]
+            ],
             [
-                'title' => 'Nutrisense',
-                'tech' => 'Python, NLP, Flask, PostgreSQL, Rest API',
+                'title' => 'NutriSense',
+                'tech' => 'Python, FastAPI, SQLAlchemy, Jinja2, PostgreSQL, NLP',
                 'desc' => 'Sistem berbasis website untuk mendeteksi kandungan gizi'
-                    . ' dari makanan yang diunggah oleh pengguna menggunakan'
-                    . ' teknologi Natural Language Processing, Studi kasus'
-                    . ' Artificial Intelligence center indonesia.',
+                    . ' dari makanan, manajemen resep, dan kalkulator kebutuhan kalori harian (TDEE).'
+                    . ' Studi kasus Artificial Intelligence Center Indonesia.',
                 'url' => 'https://igfirli-nutrisense.hf.space',
                 'github' => null,
-                'pipeline' => null,
-                'decision' => null,
-                'branches' => null,
+                'pipeline' => [
+                    ['step' => '01', 'label' => 'Input Parameter', 'sub' => 'Form TDEE atau pencarian bahan'],
+                    ['step' => '02', 'label' => 'FastAPI Processing', 'sub' => 'Routing & Query Database (SQLAlchemy)'],
+                    ['step' => '03', 'label' => 'Kalkulasi Nutrisi', 'sub' => 'Menghitung BMR/TDEE & total gizi resep'],
+                    ['step' => '04', 'label' => 'Server-Side Rendering', 'sub' => 'Jinja2 merender antarmuka dinamis ke user'],
+                ],
+                'decision' => [
+                    'label' => 'Kalkulator Harris-Benedict (TDEE)',
+                    'formula' => 'BMR × Faktor Aktivitas',
+                ],
+                'branches' => [
+                    ['cond' => 'Gender Pria', 'result' => 'Hitung BMR Pria', 'type' => 'yes'],
+                    ['cond' => 'Gender Wanita', 'result' => 'Hitung BMR Wanita', 'type' => 'no'],
+                ],
             ],
             [
                 'title' => 'Fortigate-Automation',
