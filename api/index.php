@@ -128,7 +128,7 @@ $data = getPortfolioData();
             </div>
         </section>
 
-        <section class="space-y-8">
+<section class="space-y-8">
             <div class="inline-block bg-[#540b0e] border-4 border-black p-4 brutal-shadow -rotate-1">
                 <h2 class="text-3xl font-black text-[#fff3b0] uppercase tracking-tight">
                     PRODUCTION CODE
@@ -136,71 +136,68 @@ $data = getPortfolioData();
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<?php foreach ($data['projects'] as $project): ?>
-    <div class="border-4 border-black brutal-shadow p-6 mb-8 bg-white text-black">
-        <h3 class="text-2xl font-black uppercase mb-2"><?= htmlspecialchars($project['title']) ?></h3>
-        <p class="text-sm font-bold text-[#e09f3e] mb-4 uppercase tracking-widest"><?= htmlspecialchars($project['tech']) ?></p>
-        <p class="font-medium mb-6"><?= htmlspecialchars($project['desc']) ?></p>
+                <?php foreach ($data['projects'] as $project): ?>
+                <div class="border-4 border-black brutal-shadow p-6 bg-white text-black h-full flex flex-col">
+                    <h3 class="text-2xl font-black uppercase mb-2"><?= htmlspecialchars($project['title']) ?></h3>
+                    <p class="text-sm font-bold text-[#e09f3e] mb-4 uppercase tracking-widest"><?= htmlspecialchars($project['tech']) ?></p>
+                    <p class="font-medium mb-6"><?= htmlspecialchars($project['desc']) ?></p>
 
-        <!-- Cek apakah project memiliki Pipeline AI -->
-        <?php if (!empty($project['pipeline'])): ?>
-            <div class="mt-8 border-t-4 border-black pt-6">
-                <div class="inline-block bg-black text-white px-3 py-1 font-bold uppercase tracking-widest text-sm mb-6">
-                    AI Processing Pipeline
-                </div>
-                
-                <div class="flex flex-col space-y-0">
-                    <!-- Looping Steps -->
-                    <?php foreach ($project['pipeline'] as $index => $step): ?>
-                        <div class="flex items-stretch">
-                            <!-- Nomor Step -->
-                            <div class="w-12 bg-[#335c67] border-4 border-black border-b-0 flex items-center justify-center font-black text-white text-xl">
-                                <?= $step['step'] ?>
+                    <!-- Cek apakah project memiliki Pipeline AI -->
+                    <?php if (!empty($project['pipeline'])): ?>
+                        <div class="mt-4 border-t-4 border-black pt-6">
+                            <div class="inline-block bg-black text-white px-3 py-1 font-bold uppercase tracking-widest text-sm mb-6">
+                                AI Processing Pipeline
                             </div>
-                            <!-- Detail Step -->
-                            <div class="flex-1 bg-white border-4 border-black border-l-0 border-b-0 p-3 flex flex-col justify-center">
-                                <span class="font-black uppercase text-lg leading-none"><?= htmlspecialchars($step['label']) ?></span>
-                                <span class="text-sm font-bold text-gray-500 mt-1"><?= htmlspecialchars($step['sub']) ?></span>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-
-                    <!-- Decision Block (Klasifikasi) -->
-                    <?php if (!empty($project['decision'])): ?>
-                        <div class="flex items-stretch">
-                            <div class="w-12 bg-[#9e2a2b] border-4 border-black flex items-center justify-center text-white">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path></svg>
-                            </div>
-                            <div class="flex-1 bg-[#fff3b0] border-4 border-black border-l-0 p-3 text-center">
-                                <span class="font-black uppercase text-lg block"><?= htmlspecialchars($project['decision']['label']) ?></span>
-                                <span class="font-mono text-sm font-bold text-[#9e2a2b] bg-white border-2 border-black px-2 py-1 mt-2 inline-block">
-                                    <?= htmlspecialchars($project['decision']['formula']) ?>
-                                </span>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-
-                    <!-- Branches (Hasil Lolos/Reject) -->
-                    <?php if (!empty($project['branches'])): ?>
-                        <div class="flex border-4 border-black border-t-0 bg-white">
-                            <?php foreach ($project['branches'] as $idx => $branch): ?>
-                                <div class="flex-1 p-3 text-center <?= $idx === 0 ? 'border-r-4 border-black' : '' ?>">
-                                    <div class="font-bold text-xs mb-1"><?= htmlspecialchars($branch['cond']) ?></div>
-                                    <div class="font-black text-xl <?= $branch['type'] == 'yes' ? 'text-green-600' : 'text-red-600' ?>">
-                                        <?= htmlspecialchars($branch['result']) ?>
+                            
+                            <div class="flex flex-col space-y-0">
+                                <!-- Looping Steps -->
+                                <?php foreach ($project['pipeline'] as $index => $step): ?>
+                                    <div class="flex items-stretch">
+                                        <!-- Nomor Step -->
+                                        <div class="w-12 bg-[#335c67] border-4 border-black border-b-0 flex items-center justify-center font-black text-white text-xl">
+                                            <?= $step['step'] ?>
+                                        </div>
+                                        <!-- Detail Step -->
+                                        <div class="flex-1 bg-white border-4 border-black border-l-0 border-b-0 p-3 flex flex-col justify-center">
+                                            <span class="font-black uppercase text-lg leading-none"><?= htmlspecialchars($step['label']) ?></span>
+                                            <span class="text-sm font-bold text-gray-500 mt-1"><?= htmlspecialchars($step['sub']) ?></span>
+                                        </div>
                                     </div>
-                                </div>
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
+
+                                <!-- Decision Block (Klasifikasi) -->
+                                <?php if (!empty($project['decision'])): ?>
+                                    <div class="flex items-stretch">
+                                        <div class="w-12 bg-[#9e2a2b] border-4 border-black flex items-center justify-center text-white">
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path></svg>
+                                        </div>
+                                        <div class="flex-1 bg-[#fff3b0] border-4 border-black border-l-0 p-3 text-center">
+                                            <span class="font-black uppercase text-lg block"><?= htmlspecialchars($project['decision']['label']) ?></span>
+                                            <span class="font-mono text-sm font-bold text-[#9e2a2b] bg-white border-2 border-black px-2 py-1 mt-2 inline-block">
+                                                <?= htmlspecialchars($project['decision']['formula']) ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                                <!-- Branches (Hasil Lolos/Reject) -->
+                                <?php if (!empty($project['branches'])): ?>
+                                    <div class="flex border-4 border-black border-t-0 bg-white">
+                                        <?php foreach ($project['branches'] as $idx => $branch): ?>
+                                            <div class="flex-1 p-3 text-center <?= $idx === 0 ? 'border-r-4 border-black' : '' ?>">
+                                                <div class="font-bold text-xs mb-1"><?= htmlspecialchars($branch['cond']) ?></div>
+                                                <div class="font-black text-xl <?= $branch['type'] == 'yes' ? 'text-green-600' : 'text-red-600' ?>">
+                                                    <?= htmlspecialchars($branch['result']) ?>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     <?php endif; ?>
                 </div>
-            </div>
-        <?php endif; ?>
-        
-        <!-- Action Buttons (URL / GitHub) -->
-        <!-- Anda bisa menaruh tombol link di sini -->
-    </div>
-<?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
         </section>
 
