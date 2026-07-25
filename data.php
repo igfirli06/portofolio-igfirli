@@ -55,16 +55,43 @@ function getPortfolioData(): array
                 ],
             ],
             [
-                'title' => 'People Detection Monitoring',
-                'tech' => 'Python, Machine Vision',
-                'desc' => 'Sistem pemantauan keamanan karyawan untuk area zona'
-                    . ' khusus di PT. Kutai Timber Indonesia.',
-                'url' => '#',
-                'github' => 'https://github.com/igfirli06/people_detection',
-                'pipeline' => null,
-                'decision' => null,
-                'branches' => null,
-            ],
+    'title' => 'PEOPLE DETECTION MONITORING',
+    'tech' => 'PYTHON, MACHINE VISION, YOLOv8, MYSQL, FLASK',
+    'desc' => 'Sistem pemantauan keamanan karyawan untuk area zona khusus di PT. Kutai Timber Indonesia dengan pencatatan dan dashboard real-time.',
+    'pipeline' => [
+        [
+            'step' => '01',
+            'label' => 'INPUT STREAM (RTSP)',
+            'sub' => 'Kamera mengirim stream video'
+        ],
+        [
+            'step' => '02',
+            'label' => 'YOLOv8 TRACKING',
+            'sub' => 'Deteksi tracking_id dalam poligon'
+        ],
+        [
+            'step' => '03',
+            'label' => 'MYSQL LOGGING',
+            'sub' => 'Pencatatan kejadian & zona'
+        ]
+    ],
+    'decision' => [
+        'label' => 'FLASK REAL-TIME DASHBOARD',
+        'formula' => 'Render Video Anotasi + Tabel Event'
+    ],
+    'branches' => [
+        [
+            'cond' => 'STATUS KARYAWAN',
+            'type' => 'yes',
+            'result' => 'MASUK / TERCATAT'
+        ],
+        [
+            'cond' => 'KONDISI ZONA',
+            'type' => 'no',
+            'result' => 'AMAN / KOSONG'
+        ]
+    ]
+],
             [
                 'title' => 'Nutrisense',
                 'tech' => 'Python, NLP, Flask, PostgreSQL, Rest API',
