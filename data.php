@@ -2,14 +2,14 @@
 
 function getPortfolioData(): array
 {
-    return [
-        'name' => 'Igfirlii Nuur Aziiza',
-        'role' => 'Python Engineer',
-        'cv_link' => 'static/CV_Igfirlii_Nuur_Aziiza.pdf',
-        'about' => 'Lulusan Teknik Informatika yang berdedikasi dalam membangun'
-            . ' solusi perangkat lunak yang efisien. Memiliki pengalaman dalam'
-            . ' pengembangan web fullstack serta berfokus pada bahasa pemrograman'
-            . ' python.',
+    return [
+        'name' => 'Igfirlii Nuur Aziiza',
+        'role' => 'Python Engineer',
+        'cv_link' => 'static/CV_Igfirlii_Nuur_Aziiza.pdf',
+        'about' => 'Lulusan Teknik Informatika yang berdedikasi dalam membangun'
+            . ' solusi perangkat lunak yang efisien. Memiliki pengalaman dalam'
+            . ' pengembangan web fullstack serta berfokus pada bahasa pemrograman'
+            . ' python.',
         'skills' => [
             'AI & Computer Vision' => [
                 'OpenCV',
