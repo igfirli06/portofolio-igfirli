@@ -58,6 +58,8 @@ function getPortfolioData(): array
                 'title' => 'PEOPLE DETECTION MONITORING',
                 'tech' => 'PYTHON, MACHINE VISION, YOLOv8, MYSQL, FLASK',
                 'desc' => 'Sistem pemantauan keamanan karyawan untuk area zona khusus di PT. Kutai Timber Indonesia dengan pencatatan dan dashboard real-time.',
+                'url' => 'https://igfirli06.github.io/people-detection-demo/',
+                'github' => 'https://github.com/igfirli06/people-detection-demo',
                 'pipeline' => [
                     [
                         'step' => '01',
@@ -120,8 +122,8 @@ function getPortfolioData(): array
                 'tech' => 'Python, Flask, REST API, PyParsing',
                 'desc' => 'Sistem otomasi untuk pengelolaan konfigurasi firewall'
                     . ' Fortigate studi kasus PT. Kutai Timber Indonesia.',
-                'url' => '#',
-                'github' => '#',
+                'url' => 'https://igfirli06.github.io/people-detection-demo/',
+                'github' => 'https://github.com/igfirli06/people-detection-demo',
                 'pipeline' => [
                     ['step' => '01', 'label' => 'Input Log Line', 'sub' => 'Menerima baris log Fortigate'],
                     ['step' => '02', 'label' => 'Grammar Matching', 'sub' => 'Evaluasi prioritas & key-value'],
