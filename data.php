@@ -4,7 +4,8 @@ function getPortfolioData(): array
 {
     return [
         'name' => 'Igfirlii Nuur Aziiza',
-        'role' => 'Fullstack Web Developer & AI Enthusiast',
+        'role' => 'Python Engineer',
+        'cv_link' => 'static/CV_Igfirlii_Nuur_Aziiza.pdf'
         'about' => 'Lulusan Teknik Informatika yang berdedikasi dalam membangun'
             . ' solusi perangkat lunak yang efisien. Memiliki pengalaman dalam'
             . ' pengembangan web fullstack serta berfokus pada bahasa pemrograman'
