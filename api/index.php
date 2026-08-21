@@ -7,129 +7,168 @@ require_once __DIR__ . '/data.php';
 $data = getPortfolioData();
 ?>
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($data['name']); ?> — Portfolio</title>
+    <title><?= htmlspecialchars($data['name']); ?> — Neo-Brutalist Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #FAF8F5;
+        }
+        .neo-card {
+            border: 3.5px solid #000000;
+            box-shadow: 5px 5px 0px 0px #000000;
+        }
+        .neo-card-sm {
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px 0px #000000;
+        }
+        .neo-btn {
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px 0px #000000;
+            transition: all 0.15s ease-in-out;
+        }
+        .neo-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #000000;
+        }
+        .neo-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px #000000;
+        }
+        .neo-badge {
+            border: 2px solid #000000;
+            box-shadow: 2px 2px 0px 0px #000000;
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-indigo-500 selection:text-white antialiased">
+<body class="p-4 sm:p-6 md:p-12 text-black selection:bg-black selection:text-yellow-300">
 
-    <!-- Ambient Glow Effect -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-indigo-600/10 blur-[120px] pointer-events-none rounded-full"></div>
+    <main class="max-w-4xl mx-auto space-y-8">
 
-    <main class="max-w-5xl mx-auto px-4 py-12 md:py-20 relative z-10 space-y-12">
-        
-        <!-- Hero Section -->
-        <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-8 md:p-12 backdrop-blur-md shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="space-y-5 max-w-3xl">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
-                    <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-                    Portfolio Overview
+        <!-- Top Header Tags -->
+        <div class="flex justify-between items-center">
+            <span class="neo-badge bg-[#FF70A6] text-black font-black px-4 py-1 text-xs sm:text-sm uppercase rotate-[-1deg]">
+                ⚡ Igfirli's Dev Lab
+            </span>
+            <span class="neo-badge bg-[#70D6FF] text-black font-extrabold px-3 py-1 text-xs uppercase">
+                Portfolio 2026
+            </span>
+        </div>
+
+        <!-- HERO SECTION -->
+        <section class="neo-card bg-[#FFD670] p-6 sm:p-10 relative overflow-hidden">
+            <div class="space-y-4">
+                <div class="inline-block neo-badge bg-black text-white text-xs font-black px-3 py-1 uppercase tracking-wider">
+                    👋 Software Engineer & AI Dev
                 </div>
                 
-                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+                <h1 class="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none">
                     <?= htmlspecialchars($data['name']); ?>
                 </h1>
-                
-                <p class="text-lg font-semibold text-indigo-400">
+
+                <div class="inline-block neo-badge bg-[#FF9770] font-black text-sm sm:text-base px-3 py-1 uppercase">
                     <?= htmlspecialchars($data['role']); ?>
-                </p>
-                
-                <p class="text-slate-300 leading-relaxed text-sm md:text-base font-normal">
+                </div>
+
+                <p class="font-medium text-base sm:text-lg leading-relaxed pt-3 border-t-2 border-black border-dashed font-['Plus_Jakarta_Sans']">
                     <?= htmlspecialchars($data['about']); ?>
                 </p>
-                
-                <div class="pt-2 flex flex-wrap gap-4 items-center">
-                    <a href="<?= htmlspecialchars($data['cv_link']); ?>" target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-3 rounded-xl transition duration-200 shadow-lg shadow-indigo-600/25 text-sm">
-                        <i class="fa-solid fa-file-arrow-down"></i> Unduh CV
+
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="<?= htmlspecialchars($data['cv_link']); ?>" target="_blank" class="neo-btn bg-[#E9FF70] font-black px-6 py-3 text-sm uppercase flex items-center gap-2">
+                        <i class="fa-solid fa-file-pdf"></i> Unduh CV
                     </a>
-                    <a href="https://github.com/igfirli06" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl border border-slate-700 transition duration-200 text-sm">
-                        <i class="fa-brands fa-github"></i> GitHub
+                    <a href="https://github.com/igfirli06" target="_blank" class="neo-btn bg-white font-black px-6 py-3 text-sm uppercase flex items-center gap-2">
+                        <i class="fa-brands fa-github text-base"></i> GitHub Profile
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Technical Skills Section -->
-        <section class="space-y-6">
-            <div class="flex items-center gap-3">
-                <div class="p-2 bg-indigo-500/10 border border-indigo-500/20 rounded-lg text-indigo-400">
-                    <i class="fa-solid fa-code"></i>
-                </div>
-                <h2 class="text-2xl font-bold text-white">Technical Skills</h2>
+        <!-- SKILLS SECTION -->
+        <section class="neo-card bg-white p-6 sm:p-8 space-y-6">
+            <div class="flex items-center gap-3 border-b-4 border-black pb-3">
+                <span class="neo-badge bg-[#FF70A6] p-2 text-xl font-black">🛠️</span>
+                <h2 class="text-2xl sm:text-3xl font-black uppercase">Technical Skills</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <?php foreach ($data['skills'] as $category => $items): ?>
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-6 hover:border-slate-700 transition duration-200">
-                        <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-4 border-b border-slate-800/80 pb-2">
+                <?php 
+                $colors = ['bg-[#70D6FF]', 'bg-[#E9FF70]', 'bg-[#FF9770]'];
+                $i = 0;
+                foreach ($data['skills'] as $category => $items): 
+                    $cardColor = $colors[$i % count($colors)];
+                    $i++;
+                ?>
+                    <div class="neo-card-sm <?= $cardColor; ?> p-5 space-y-3">
+                        <h3 class="font-black text-base uppercase border-b-2 border-black pb-1">
                             <?= htmlspecialchars($category); ?>
                         </h3>
-                        <div class="flex flex-wrap gap-2">
+                        <ul class="space-y-2 font-['Plus_Jakarta_Sans'] text-sm font-bold">
                             <?php foreach ($items as $skill): ?>
-                                <span class="px-3 py-1.5 bg-slate-800/80 border border-slate-700/60 rounded-lg text-xs font-medium text-slate-200">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 bg-black inline-block border border-black"></span>
                                     <?= htmlspecialchars($skill); ?>
-                                </span>
+                                </li>
                             <?php endforeach; ?>
-                        </div>
+                        </ul>
                     </div>
                 <?php endforeach; ?>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section class="space-y-6">
-            <div class="flex items-center gap-3">
-                <div class="p-2 bg-indigo-500/10 border border-indigo-500/20 rounded-lg text-indigo-400">
-                    <i class="fa-solid fa-diagram-project"></i>
-                </div>
-                <h2 class="text-2xl font-bold text-white">Featured Projects</h2>
+        <!-- PROJECTS SECTION -->
+        <section class="neo-card bg-[#E9FF70] p-6 sm:p-8 space-y-6">
+            <div class="flex items-center gap-3 border-b-4 border-black pb-3">
+                <span class="neo-badge bg-black text-white p-2 text-xl font-black">🚀</span>
+                <h2 class="text-2xl sm:text-3xl font-black uppercase">Featured Projects</h2>
             </div>
 
             <div class="space-y-6">
                 <?php foreach ($data['projects'] as $project): ?>
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 md:p-8 hover:border-slate-700 transition duration-200 space-y-6">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
-                            <h3 class="text-xl font-bold text-white"><?= htmlspecialchars($project['title']); ?></h3>
+                    <div class="neo-card bg-white p-6 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-black pb-3">
+                            <h3 class="text-xl font-black uppercase tracking-tight"><?= htmlspecialchars($project['title']); ?></h3>
                             <?php if (!empty($project['github'])): ?>
-                                <a href="<?= htmlspecialchars($project['github']); ?>" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition">
-                                    <i class="fa-brands fa-github text-base"></i> View Repository
+                                <a href="<?= htmlspecialchars($project['github']); ?>" target="_blank" class="neo-btn bg-[#70D6FF] text-xs font-black px-3 py-1.5 uppercase inline-flex items-center gap-1.5 self-start sm:self-auto">
+                                    <i class="fa-brands fa-github"></i> Repository
                                 </a>
                             <?php endif; ?>
                         </div>
 
-                        <p class="text-slate-300 text-sm leading-relaxed"><?= htmlspecialchars($project['desc']); ?></p>
+                        <p class="font-medium text-sm leading-relaxed font-['Plus_Jakarta_Sans']">
+                            <?= htmlspecialchars($project['desc']); ?>
+                        </p>
 
-                        <div class="flex flex-wrap gap-2">
-                            <?php foreach (explode(',', $project['tech']) as $techItem): ?>
-                                <span class="px-2.5 py-1 bg-indigo-950/60 border border-indigo-800/40 text-indigo-300 rounded-md text-xs font-medium">
-                                    <?= htmlspecialchars(trim($techItem)); ?>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <?php foreach (explode(',', $project['tech']) as $tech): ?>
+                                <span class="neo-badge bg-[#FFD670] text-xs font-extrabold px-2.5 py-1 uppercase">
+                                    <?= htmlspecialchars(trim($tech)); ?>
                                 </span>
                             <?php endforeach; ?>
                         </div>
 
                         <?php if (isset($project['pipeline'])): ?>
-                            <div class="pt-4 border-t border-slate-800/80">
-                                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-4">Pipeline Execution</p>
-                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                            <div class="pt-4 border-t-2 border-black border-dashed">
+                                <span class="neo-badge bg-black text-white text-[10px] font-black px-2 py-0.5 uppercase tracking-wider mb-3 inline-block">
+                                    Pipeline Execution
+                                </span>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
                                     <?php foreach ($project['pipeline'] as $pipe): ?>
-                                        <div class="bg-slate-950/80 border border-slate-800/80 p-3 rounded-xl text-center space-y-1">
-                                            <span class="text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full inline-block">
+                                        <div class="neo-card-sm bg-[#FAF8F5] p-2 text-center space-y-1">
+                                            <span class="bg-[#FF70A6] text-black font-black text-[10px] px-1.5 py-0.5 border border-black inline-block">
                                                 <?= $pipe['step']; ?>
                                             </span>
-                                            <p class="text-xs font-semibold text-slate-200"><?= htmlspecialchars($pipe['label']); ?></p>
-                                            <p class="text-[10px] text-slate-400"><?= htmlspecialchars($pipe['sub']); ?></p>
+                                            <p class="font-extrabold text-xs uppercase leading-tight"><?= htmlspecialchars($pipe['label']); ?></p>
+                                            <p class="text-[10px] font-semibold text-gray-700 font-['Plus_Jakarta_Sans']"><?= htmlspecialchars($pipe['sub']); ?></p>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
@@ -140,6 +179,14 @@ $data = getPortfolioData();
             </div>
         </section>
 
+        <!-- FOOTER -->
+        <footer class="text-center pt-2">
+            <span class="neo-badge bg-black text-white text-xs font-black px-4 py-2 uppercase inline-block">
+                © Igfirlii Nuur Aziiza • Neo-Brutalist Edition
+            </span>
+        </footer>
+
     </main>
+
 </body>
 </html>
