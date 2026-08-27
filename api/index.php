@@ -1,228 +1,179 @@
 <?php
+// Tampilkan error jika di local (membantu debugging)
 ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once __DIR__ . '/data.php';
-$data = getPortfolioData();
+if (file_exists(__DIR__ . '/data.php')) {
+    require_once __DIR__ . '/data.php';
+} elseif (file_exists(__DIR__ . '/../data.php')) {
+    require_once __DIR__ . '/../data.php';
+}
+
+// Proteksi jika function tidak ada
+$data = function_exists('getPortfolioData') ? getPortfolioData() : [];
 ?>
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($data['name']); ?> — Neo-Brutalist Portfolio</title>
+    <title>Portofolio | <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #FAF8F5;
-            /* Tambahan: Background pattern titik-titik khas Neo-Brutalism */
-            background-image: radial-gradient(#000000 1.5px, transparent 1.5px);
-            background-size: 25px 25px;
-        }
-        
-        .neo-card {
-            border: 4px solid #000000;
-            box-shadow: 8px 8px 0px 0px #000000;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        /* Efek hover pada kartu utama agar lebih dinamis */
-        .neo-card-hover:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 12px 12px 0px 0px #000000;
-        }
-
-        .neo-card-sm {
-            border: 3px solid #000000;
-            box-shadow: 5px 5px 0px 0px #000000;
-            transition: all 0.2s ease;
-        }
-        .neo-card-sm:hover {
-            transform: translate(-2px, -2px) rotate(1deg);
-            box-shadow: 7px 7px 0px 0px #000000;
-        }
-
-        .neo-btn {
-            border: 3px solid #000000;
-            box-shadow: 5px 5px 0px 0px #000000;
-            transition: all 0.15s ease-in-out;
-            cursor: pointer;
-        }
-        .neo-btn:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 8px 8px 0px 0px #000000;
-        }
-        .neo-btn:active {
-            transform: translate(4px, 4px);
-            box-shadow: 0px 0px 0px 0px #000000; /* Terlihat seperti tombol ditekan rata */
-        }
-
-        .neo-badge {
-            border: 2px solid #000000;
-            box-shadow: 3px 3px 0px 0px #000000;
-        }
-
-        /* Animasi Bintang Berputar */
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-        .spin-slow {
-            animation: spin 8s linear infinite;
-        }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #fff3b0; }
+        h1, h2, h3 { font-family: 'Syne', sans-serif; }
+        .hero-bg { background-image: url("static/fullstcak.png"); background-blend-mode: multiply; }
+        .brutal-shadow { box-shadow: 8px 8px 0px 0px #000000; }
+        .brutal-shadow-sm { box-shadow: 4px 4px 0px 0px #000000; }
+        .brutal-shadow-lg { box-shadow: 12px 12px 0px 0px #000000; }
     </style>
 </head>
-<body class="p-4 sm:p-6 md:p-12 text-black selection:bg-[#FF70A6] selection:text-black">
+<body class="text-[#540b0e] antialiased selection:bg-[#9e2a2b] selection:text-white p-4 md:p-8">
 
-    <main class="max-w-4xl mx-auto space-y-10">
-
-        <!-- Top Header Tags -->
-        <div class="flex justify-between items-center bg-white p-2 border-4 border-black box-shadow neo-badge transform rotate-1 mb-8">
-            <span class="bg-[#FF70A6] text-black font-black px-4 py-1 text-xs sm:text-sm uppercase border-2 border-black -rotate-2 inline-block">
-                ⚡ Igfirli's Dev Lab
+    <!-- HERO HEADER -->
+    <header class="relative w-full min-h-[95vh] bg-[#335c67] border-4 border-black brutal-shadow-lg flex items-center justify-center p-6 md:p-12 mb-16 overflow-hidden">
+        <div class="absolute inset-0 hero-bg bg-cover bg-center opacity-20 filter grayscale"></div>
+        <div class="relative z-10 text-center max-w-3xl">
+            <span class="inline-block bg-[#e09f3e] text-black text-sm font-bold uppercase tracking-wider px-4 py-2 border-2 border-black brutal-shadow-sm -rotate-2 mb-6">
+                Available for Hire // 2026
             </span>
-            <span class="bg-[#70D6FF] text-black font-extrabold px-3 py-1 text-xs uppercase border-2 border-black rotate-1 inline-block">
-                Portfolio 2026
-            </span>
-        </div>
-
-        <!-- HERO SECTION -->
-        <section class="neo-card neo-card-hover bg-[#FFD670] p-6 sm:p-10 relative overflow-hidden transform -rotate-1">
-            <!-- Dekorasi Bintang Brutalist -->
-            <div class="absolute top-4 right-4 text-4xl sm:text-6xl opacity-80 spin-slow">
-                <i class="fa-solid fa-asterisk"></i>
-            </div>
-
-            <div class="space-y-5 relative z-10">
-                <div class="inline-block neo-badge bg-black text-white text-xs font-black px-3 py-1.5 uppercase tracking-wider transform rotate-1">
-                    👋 Software Engineer & AI Dev
-                </div>
-                
-                <h1 class="text-5xl sm:text-7xl font-black uppercase tracking-tighter leading-none" style="-webkit-text-stroke: 1px black;">
-                    <?= htmlspecialchars($data['name']); ?>
-                </h1>
-
-                <div class="inline-block neo-badge bg-[#FF9770] font-black text-sm sm:text-base px-4 py-2 uppercase -rotate-1">
-                    <?= htmlspecialchars($data['role']); ?>
-                </div>
-
-                <p class="font-bold text-base sm:text-xl leading-relaxed pt-4 border-t-4 border-black border-dashed font-['Plus_Jakarta_Sans'] bg-white p-4 mt-4 border-2 neo-badge">
-                    <?= htmlspecialchars($data['about']); ?>
+            <h1 class="text-5xl md:text-8xl font-black text-[#fff3b0] uppercase tracking-tighter leading-none mb-6 border-4 border-black bg-[#540b0e] p-6 brutal-shadow rotate-1">
+                <?= htmlspecialchars($data['name'] ?? 'Your Name') ?>
+            </h1>
+            <div class="bg-white border-4 border-black p-4 brutal-shadow -rotate-1 inline-block mb-8">
+                <p class="text-xl md:text-2xl font-bold text-black uppercase">
+                    [ <?= htmlspecialchars($data['role'] ?? 'Software Engineer') ?> ]
                 </p>
-
-                <div class="pt-6 flex flex-wrap gap-4">
-                    <a href="<?= htmlspecialchars($data['cv_link']); ?>" target="_blank" class="neo-btn bg-[#E9FF70] font-black px-8 py-3 text-base uppercase flex items-center gap-2">
-                        <i class="fa-solid fa-file-pdf text-xl"></i> Unduh CV
-                    </a>
-                    <a href="https://github.com/igfirli06" target="_blank" class="neo-btn bg-white font-black px-8 py-3 text-base uppercase flex items-center gap-2">
-                        <i class="fa-brands fa-github text-xl"></i> GitHub Profile
-                    </a>
-                </div>
             </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <a href="#about" class="inline-block bg-[#9e2a2b] text-[#fff3b0] text-xl font-bold uppercase px-8 py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+                    Let's Build.exe →
+                </a>
+                <?php if (!empty($data['cv_link'])): ?>
+                <a href="<?= htmlspecialchars($data['cv_link']) ?>" target="_blank" download class="inline-block bg-[#e09f3e] text-black text-xl font-bold uppercase px-8 py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+                    📄 Download CV (PDF)
+                </a>
+                <?php endif; ?>
+            </div>
+
+            <!-- SOCIAL LINKS -->
+            <div class="flex justify-center gap-4 mt-2">
+                <a href="https://github.com/igfirli06" target="_blank" class="p-3 bg-white border-4 border-black brutal-shadow-sm text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/igfirlii-nuur-aziiza-774551229/" target="_blank" class="p-3 bg-[#e09f3e] border-4 border-black brutal-shadow-sm text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://instagram.com/belajar_bersamal1l1" target="_blank" class="p-3 bg-[#9e2a2b] border-4 border-black brutal-shadow-sm text-[#fff3b0] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583 0.07-4.849 0.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-5xl mx-auto space-y-24 pb-20">
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="bg-white border-4 border-black p-8 brutal-shadow relative">
+            <div class="absolute -top-6 left-6 bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+                01 // Who Am I?
+            </div>
+            <h2 class="text-3xl font-black uppercase text-black mb-4 mt-2">About Me</h2>
+            <p class="text-lg leading-relaxed text-gray-800 font-medium">
+                <?= htmlspecialchars($data['about'] ?? 'Data profil sedang disiapkan...') ?>
+            </p>
         </section>
 
         <!-- SKILLS SECTION -->
-        <section class="neo-card bg-white p-6 sm:p-8 space-y-8 transform rotate-1">
-            <div class="flex items-center justify-between border-b-4 border-black pb-4">
-                <div class="flex items-center gap-3">
-                    <span class="neo-badge bg-[#FF70A6] p-2 text-2xl font-black transform -rotate-6">🛠️</span>
-                    <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">Technical Skills</h2>
-                </div>
+        <section id="skills" class="space-y-6">
+            <div class="inline-block bg-[#e09f3e] text-black px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+                02 // Tech Stack
             </div>
-
+            <h2 class="text-4xl font-black uppercase text-black">Technical Expertise</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <?php 
-                $colors = ['bg-[#70D6FF]', 'bg-[#E9FF70]', 'bg-[#FF9770]'];
-                $i = 0;
-                foreach ($data['skills'] as $category => $items): 
-                    $cardColor = $colors[$i % count($colors)];
-                    $i++;
-                ?>
-                    <div class="neo-card-sm <?= $cardColor; ?> p-5 space-y-4 relative overflow-hidden hover:-translate-y-2 transition-transform">
-                        <h3 class="font-black text-lg uppercase border-b-4 border-black pb-2 bg-white px-2 neo-badge inline-block mb-2">
-                            <?= htmlspecialchars($category); ?>
+                <?php foreach (($data['skills'] ?? []) as $category => $items): ?>
+                <div class="bg-white border-4 border-black p-6 brutal-shadow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-black uppercase text-[#540b0e] border-b-4 border-black pb-2 mb-4">
+                            <?= htmlspecialchars($category) ?>
                         </h3>
-                        <ul class="space-y-3 font-['Plus_Jakarta_Sans'] text-sm font-extrabold">
-                            <?php foreach ($items as $skill): ?>
-                                <li class="flex items-center gap-3 bg-white/50 p-1.5 border-2 border-black rounded-sm">
-                                    <span class="w-3 h-3 bg-black inline-block border-2 border-white rounded-full"></span>
-                                    <?= htmlspecialchars($skill); ?>
-                                </li>
+                        <ul class="space-y-2">
+                            <?php foreach (($items ?? []) as $skill): ?>
+                            <li class="flex items-center gap-2 font-bold text-gray-800">
+                                <span class="w-3 h-3 bg-[#9e2a2b] border border-black inline-block"></span>
+                                <?= htmlspecialchars($skill) ?>
+                            </li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
+                </div>
                 <?php endforeach; ?>
             </div>
         </section>
 
         <!-- PROJECTS SECTION -->
-        <section class="neo-card bg-[#E9FF70] p-6 sm:p-8 space-y-8 transform -rotate-1">
-            <div class="flex items-center gap-3 border-b-4 border-black pb-4">
-                <span class="neo-badge bg-black text-white p-2 text-2xl font-black transform rotate-6">🚀</span>
-                <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">Featured Projects</h2>
+        <section id="projects" class="space-y-8">
+            <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+                03 // Selected Projects
             </div>
-
-            <div class="space-y-8">
-                <?php foreach ($data['projects'] as $project): ?>
-                    <div class="neo-card neo-card-hover bg-white p-6 space-y-5 transition-all">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-4 border-black pb-4">
-                            <h3 class="text-2xl font-black uppercase tracking-tight bg-[#FF70A6] px-2 py-1 neo-badge inline-block">
-                                <?= htmlspecialchars($project['title']); ?>
+            <h2 class="text-4xl font-black uppercase text-black">Production Code</h2>
+            <div class="space-y-12">
+                <?php foreach (($data['projects'] ?? []) as $index => $project): ?>
+                <article class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow space-y-6">
+                    <div class="flex flex-wrap justify-between items-start gap-4 border-b-4 border-black pb-4">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-[#335c67]">Project #0<?= $index + 1 ?></span>
+                            <h3 class="text-2xl md:text-3xl font-black uppercase text-black">
+                                <?= htmlspecialchars($project['title'] ?? 'Unknown Project') ?>
                             </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <?php if (!empty($project['url'])): ?>
+                            <a href="<?= htmlspecialchars($project['url']) ?>" target="_blank" class="bg-[#e09f3e] text-black font-bold text-sm uppercase px-4 py-2 border-2 border-black brutal-shadow-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
+                                🌐 Live App
+                            </a>
+                            <?php endif; ?>
                             <?php if (!empty($project['github'])): ?>
-                                <a href="<?= htmlspecialchars($project['github']); ?>" target="_blank" class="neo-btn bg-[#70D6FF] text-sm font-black px-4 py-2 uppercase inline-flex items-center gap-2 self-start sm:self-auto">
-                                    <i class="fa-brands fa-github text-lg"></i> Repository
-                                </a>
+                            <a href="<?= htmlspecialchars($project['github']) ?>" target="_blank" class="bg-black text-white font-bold text-sm uppercase px-4 py-2 border-2 border-black brutal-shadow-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
+                                💻 GitHub
+                            </a>
                             <?php endif; ?>
                         </div>
-
-                        <p class="font-bold text-base leading-relaxed font-['Plus_Jakarta_Sans'] border-l-4 border-black pl-4">
-                            <?= htmlspecialchars($project['desc']); ?>
-                        </p>
-
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <?php foreach (explode(',', $project['tech']) as $tech): ?>
-                                <span class="neo-badge bg-[#FFD670] text-xs font-black px-3 py-1.5 uppercase hover:bg-black hover:text-white transition-colors cursor-default">
-                                    <?= htmlspecialchars(trim($tech)); ?>
-                                </span>
+                    </div>
+                    <p class="text-gray-800 font-medium">
+                        <?= htmlspecialchars($project['desc'] ?? '') ?>
+                    </p>
+                    <div class="bg-[#fff3b0] border-2 border-black p-3 font-mono text-sm font-bold text-[#540b0e]">
+                        TECH: <?= htmlspecialchars($project['tech'] ?? '') ?>
+                    </div>
+                    <?php if (!empty($project['pipeline'])): ?>
+                    <div class="space-y-3 pt-2">
+                        <h4 class="font-black uppercase text-xs tracking-wider text-gray-500">// Pipeline Execution</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2">
+                            <?php foreach ($project['pipeline'] as $pipe): ?>
+                            <div class="bg-gray-100 border-2 border-black p-2 text-center">
+                                <span class="block text-xs font-black text-[#9e2a2b]"><?= htmlspecialchars($pipe['step'] ?? '') ?></span>
+                                <span class="block font-bold text-xs uppercase text-black"><?= htmlspecialchars($pipe['label'] ?? '') ?></span>
+                                <span class="block text-[10px] text-gray-600"><?= htmlspecialchars($pipe['sub'] ?? '') ?></span>
+                            </div>
                             <?php endforeach; ?>
                         </div>
-
-                        <?php if (isset($project['pipeline'])): ?>
-                            <div class="pt-6 border-t-4 border-black border-dashed mt-4">
-                                <span class="neo-badge bg-black text-white text-[11px] font-black px-3 py-1 uppercase tracking-widest mb-4 inline-block transform -rotate-1">
-                                    ⚙️ Pipeline Execution
-                                </span>
-                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-                                    <?php foreach ($project['pipeline'] as $pipe): ?>
-                                        <div class="neo-card-sm bg-[#FAF8F5] p-3 text-center space-y-2 hover:bg-[#70D6FF] transition-colors">
-                                            <span class="bg-[#FF70A6] text-black font-black text-xs px-2 py-1 border-2 border-black inline-block mb-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                                                <?= $pipe['step']; ?>
-                                            </span>
-                                            <p class="font-black text-sm uppercase leading-tight"><?= htmlspecialchars($pipe['label']); ?></p>
-                                            <p class="text-xs font-bold text-gray-800 font-['Plus_Jakarta_Sans'] border-t-2 border-black pt-1"><?= htmlspecialchars($pipe['sub']); ?></p>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        <?php endif; ?>
                     </div>
+                    <?php endif; ?>
+                </article>
                 <?php endforeach; ?>
             </div>
         </section>
-
-        <!-- FOOTER -->
-        <footer class="text-center pt-8 pb-4">
-            <span class="neo-badge bg-black text-[#E9FF70] text-sm font-black px-6 py-3 uppercase inline-block transform hover:scale-105 transition-transform cursor-pointer">
-                © Igfirlii Nuur Aziiza • Neo-Brutalist Edition
-            </span>
-        </footer>
-
     </main>
+
+    <footer class="text-center py-8 border-t-4 border-black text-black font-bold uppercase text-sm">
+        © <?= date('Y') ?> <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?> — All Rights Reserved.
+    </footer>
 
 </body>
 </html>
