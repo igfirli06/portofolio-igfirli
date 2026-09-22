@@ -78,15 +78,15 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     <main class="max-w-5xl mx-auto space-y-24 pb-20">
 
         <!-- ABOUT SECTION WITH PHOTO -->
-        <section id="about" class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-stretch">
+        <section id="about" class="grid grid-cols-1 md:grid-cols-12 items-stretch">
             
             <!-- FOTO SAYA (KIRI) -->
-            <div class="md:col-span-4 bg-white border-4 border-black p-4 brutal-shadow flex items-center justify-center relative">
-                <div class="w-full h-full min-h-[220px] bg-[#fff3b0] border-2 border-black p-2 flex items-center justify-center overflow-hidden">
-                    <img src="<?= htmlspecialchars($data['photo_url'] ?? 'pixel-art.jpg') ?>" 
-                         alt="Foto Profil Pixel Art" 
-                         class="w-full h-auto max-h-64 object-contain">
-                </div>
+            <!-- Container luar: p-0 untuk full width, min-h-[256px] untuk tinggi minimum -->
+            <div class="md:col-span-4 bg-white border-4 border-black brutal-shadow relative min-h-[256px]">
+                 <!-- Image: absolute inset-0 agar mengisi container, object-cover agar full tanpa distorsi -->
+                 <img src="<?= htmlspecialchars($data['photo_url'] ?? 'pixel-art.jpg') ?>" 
+                      alt="Foto Profil Pixel Art" 
+                      class="absolute inset-0 w-full h-full object-cover">
             </div>
 
             <!-- ABOUT ME (KANAN) -->
