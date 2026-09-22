@@ -41,7 +41,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         }
     </style>
 </head>
-<body class="text-[#540b0e] antialiased selection:bg-[#9e2a2b] selection:text-white p-4 md:p-8">
+<body class="text-[#540b0e] antialiased selection:bg-[#9e2a2b] selection:text-white p-4 md:p-8 overflow-x-hidden">
 
     <!-- HERO HEADER -->
     <header class="relative w-full min-h-[95vh] bg-[#335c67] border-4 border-black brutal-shadow-lg flex items-center justify-center p-6 md:p-12 mb-16 overflow-hidden">
@@ -260,17 +260,20 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     </main>
 
     <!-- FOOTER WITH WALKING CAT ANIMATION -->
-    <footer class="relative overflow-hidden text-center py-8 border-t-4 border-black text-black font-bold uppercase text-sm bg-[#fff3b0]">
-    <div class="absolute bottom-1 left-0 animate-walk-right pointer-events-none z-0">
-        <img src="/static/thedailysnark-cat-8915.gif" 
-             alt="Kucing Pixel Walk" 
-             class="h-12 md:h-16 w-auto pixelated">
-    </div>
+    <footer class="relative text-center py-8 border-t-4 border-black text-black font-bold uppercase text-sm bg-[#fff3b0]">
+        
+        <!-- Kucing Berjalan di Atas Garis Border -->
+        <div class="absolute bottom-full left-0 animate-walk-right pointer-events-none z-10 -mb-[2px]">
+            <img src="/static/thedailysnark-cat-8915.gif" 
+                 alt="Kucing Pixel Walk" 
+                 class="h-12 md:h-16 w-auto pixelated">
+        </div>
 
-    <div class="relative z-10 bg-[#fff3b0] inline-block px-4">
-        © <?= date('Y') ?> <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?> — All Rights Reserved.
-    </div>
-</footer>
+        <div class="relative z-10 bg-[#fff3b0] inline-block px-4">
+            © <?= date('Y') ?> <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?> — All Rights Reserved.
+        </div>
+        
+    </footer>
 
 </body>
 </html>
