@@ -7,8 +7,8 @@ function getPortfolioData(): array
         'role' => 'Junior Python Developer',
         'cv_link' => 'static/CV_Igfirlii_Nuur_Aziiza.pdf',
         'about' => 'Information Technology professional with a strong background in Python programming, Artificial Intelligence (AI), and Machine Learning. '
-             . 'Experienced in core AI pillars including Rule-based Expert Systems, Neural Networks, and Deep Learning, with hands-on expertise gained through the MSIB program at PT. Artifisial Intelegensia Indonesia and practical deployment at PT. Kutai Timber Indonesia. '
-             . 'Committed to building innovative, efficient AI and software solutions while fostering strong cross-cultural communication and team collaboration.',
+                 . 'Experienced in core AI pillars including Rule-based Expert Systems, Neural Networks, and Deep Learning, with hands-on expertise gained through the MSIB program at PT. Artifisial Intelegensia Indonesia and practical deployment at PT. Kutai Timber Indonesia. '
+                 . 'Committed to building innovative, efficient AI and software solutions while fostering strong cross-cultural communication and team collaboration.',
         'skills' => [
             'AI & Computer Vision' => [
                 'OpenCV',
