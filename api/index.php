@@ -27,6 +27,18 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         .brutal-shadow { box-shadow: 8px 8px 0px 0px #000000; }
         .brutal-shadow-sm { box-shadow: 4px 4px 0px 0px #000000; }
         .brutal-shadow-lg { box-shadow: 12px 12px 0px 0px #000000; }
+
+        /* Animasi Kucing Jalan */
+        @keyframes walkRight {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100vw); }
+        }
+        .animate-walk-right {
+            animation: walkRight 12s linear infinite;
+        }
+        .pixelated {
+            image-rendering: pixelated;
+        }
     </style>
 </head>
 <body class="text-[#540b0e] antialiased selection:bg-[#9e2a2b] selection:text-white p-4 md:p-8">
@@ -81,9 +93,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         <section id="about" class="grid grid-cols-1 md:grid-cols-12 items-stretch">
             
             <!-- FOTO SAYA (KIRI) -->
-            <!-- Container luar: p-0 untuk full width, min-h-[256px] untuk tinggi minimum -->
             <div class="md:col-span-4 bg-white border-4 border-black brutal-shadow relative min-h-[256px]">
-                 <!-- Image: absolute inset-0 agar mengisi container, object-cover agar full tanpa distorsi -->
                  <img src="<?= htmlspecialchars($data['photo_url'] ?? 'pixel-art.jpg') ?>" 
                       alt="Foto Profil Pixel Art" 
                       class="absolute inset-0 w-full h-full object-cover">
@@ -118,7 +128,6 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                         <ul class="space-y-3">
                             <?php foreach (($items ?? []) as $skill): ?>
                             <li>
-                                <!-- Mengubah li biasa menjadi tombol yang bisa diklik -->
                                 <button type="button" 
                                         onclick="openSkillModal('<?= htmlspecialchars($skill['name'], ENT_QUOTES) ?>', '<?= htmlspecialchars($skill['details'], ENT_QUOTES) ?>')"
                                         class="flex items-center gap-2 font-bold text-gray-800 text-left w-full hover:text-[#9e2a2b] hover:translate-x-1 transition-transform cursor-pointer group">
@@ -139,7 +148,6 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         <!-- SKILL MODAL (POPUP) -->
         <div id="skill-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
             <div class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow-lg max-w-md w-full relative transform scale-95 transition-transform duration-300" id="skill-modal-content">
-                <!-- Tombol Close -->
                 <button onclick="closeSkillModal()" class="absolute -top-4 -right-4 bg-[#9e2a2b] text-[#fff3b0] border-4 border-black w-10 h-10 flex items-center justify-center font-black text-xl hover:translate-x-1 hover:translate-y-1 brutal-shadow-sm transition-all z-10">
                     X
                 </button>
@@ -165,11 +173,9 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                 const modal = document.getElementById('skill-modal');
                 const modalContent = document.getElementById('skill-modal-content');
                 
-                // Menampilkan modal dengan efek transisi
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
                 
-                // Sedikit delay agar transisi CSS berjalan
                 setTimeout(() => {
                     modal.classList.remove('opacity-0');
                     modalContent.classList.remove('scale-95');
@@ -181,19 +187,16 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                 const modal = document.getElementById('skill-modal');
                 const modalContent = document.getElementById('skill-modal-content');
                 
-                // Memulai animasi keluar
                 modal.classList.add('opacity-0');
                 modalContent.classList.remove('scale-100');
                 modalContent.classList.add('scale-95');
                 
-                // Menyembunyikan modal setelah animasi selesai
                 setTimeout(() => {
                     modal.classList.add('hidden');
                     modal.classList.remove('flex');
                 }, 300);
             }
             
-            // Menutup modal jika user mengklik area luar (background gelap)
             document.getElementById('skill-modal').addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeSkillModal();
@@ -256,8 +259,17 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         </section>
     </main>
 
-    <footer class="text-center py-8 border-t-4 border-black text-black font-bold uppercase text-sm">
-        © <?= date('Y') ?> <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?> — All Rights Reserved.
+    <!-- FOOTER WITH WALKING CAT ANIMATION -->
+    <footer class="relative overflow-hidden text-center py-8 border-t-4 border-black text-black font-bold uppercase text-sm bg-[#fff3b0]">
+        <div class="absolute bottom-1 left-0 animate-walk-right pointer-events-none z-0">
+            <img src="thedailysnark-cat-8915.gif" 
+                 alt="Kucing Pixel Walk" 
+                 class="h-12 md:h-16 w-auto pixelated">
+        </div>
+
+        <div class="relative z-10 bg-[#fff3b0] inline-block px-4">
+            © <?= date('Y') ?> <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?> — All Rights Reserved.
+        </div>
     </footer>
 
 </body>
