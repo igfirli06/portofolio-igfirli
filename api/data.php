@@ -6,7 +6,8 @@ function getPortfolioData(): array
         'name' => 'Igfirlii Nuur Aziiza',
         'role' => 'Junior Python Developer',
         'cv_link' => 'static/CV_Igfirlii_Nuur_Aziiza.pdf',
-        'photo_url' => 'static/pixel-art.jpg', // INI SUDAH DIPERBAIKI
+        'photo_url' => 'static/pixel-art.jpg', 
+        'cat_gif' => 'static/thedailysnark-cat-8915.gif',
         'about' => 'Information Technology professional with a strong background in Python programming, Artificial Intelligence (AI), and Machine Learning. '
                  . 'Experienced in core AI pillars including Rule-based Expert Systems, Neural Networks, and Deep Learning, with hands-on expertise gained through the MSIB program at PT. Artifisial Intelegensia Indonesia and practical deployment at PT. Kutai Timber Indonesia. '
                  . 'Committed to building innovative, efficient AI and software solutions while fostering strong cross-cultural communication and team collaboration.',
