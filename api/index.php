@@ -261,16 +261,16 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
 
     <!-- FOOTER WITH WALKING CAT ANIMATION -->
     <footer class="relative overflow-hidden text-center py-8 border-t-4 border-black text-black font-bold uppercase text-sm bg-[#fff3b0]">
-        <div class="absolute bottom-1 left-0 animate-walk-right pointer-events-none z-0">
-            <img src="thedailysnark-cat-8915.gif" 
-                 alt="Kucing Pixel Walk" 
-                 class="h-12 md:h-16 w-auto pixelated">
-        </div>
+    <div class="absolute bottom-1 left-0 animate-walk-right pointer-events-none z-0">
+        <img src="/static/thedailysnark-cat-8915.gif" 
+             alt="Kucing Pixel Walk" 
+             class="h-12 md:h-16 w-auto pixelated">
+    </div>
 
-        <div class="relative z-10 bg-[#fff3b0] inline-block px-4">
-            © <?= date('Y') ?> <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?> — All Rights Reserved.
-        </div>
-    </footer>
+    <div class="relative z-10 bg-[#fff3b0] inline-block px-4">
+        © <?= date('Y') ?> <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?> — All Rights Reserved.
+    </div>
+</footer>
 
 </body>
 </html>
