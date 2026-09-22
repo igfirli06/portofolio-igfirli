@@ -12,22 +12,22 @@ function getPortfolioData(): array
                  . 'Committed to building innovative, efficient AI and software solutions while fostering strong cross-cultural communication and team collaboration.',
         'skills' => [
             'AI & Computer Vision' => [
-                'OpenCV',
-                'YOLO',
-                'Scikit-Learn (KNN)',
-                'NumPy / Pandas'
+                ['name' => 'OpenCV', 'details' => 'Versi: 4.x. Penggunaan: Image Processing, Color Extraction (HSV, CIELab, RGB) untuk deteksi warna.'],
+                ['name' => 'YOLO', 'details' => 'Versi: YOLOv8. Penggunaan: Object Detection & Tracking untuk sistem pemantauan area.'],
+                ['name' => 'Scikit-Learn (KNN)', 'details' => 'Penggunaan: Implementasi Weighted KNN (WKNN) Classifier untuk sistem klasifikasi.'],
+                ['name' => 'NumPy / Pandas', 'details' => 'Penggunaan: Manipulasi data dan operasi komputasi matriks/array berkinerja tinggi.']
             ],
             'Cloud & Tools' => [
-                'AWS (EC2 / Boto3)',
-                'Git/GitHub',
-                'VS Code',
-                'Postman'
+                ['name' => 'AWS (EC2 / Boto3)', 'details' => 'Penggunaan: Deployment model dan manajemen layanan cloud menggunakan Python Boto3.'],
+                ['name' => 'Git/GitHub', 'details' => 'Penggunaan: Version control, manajemen repositori kode, dan kolaborasi tim.'],
+                ['name' => 'VS Code', 'details' => 'Penggunaan: Integrated Development Environment (IDE) utama dengan ekstensi Python.'],
+                ['name' => 'Postman', 'details' => 'Penggunaan: Pengujian (Testing) dan dokumentasi endpoint REST API.']
             ],
             'Backend & Database' => [
-                'Python (Flask & FastAPI)',
-                'PostgreSQL',
-                'SQLAlchemy',
-                'REST API'
+                ['name' => 'Python (Flask & FastAPI)', 'details' => 'Penggunaan: Membangun backend, microservices, dan sistem real-time dashboard.'],
+                ['name' => 'PostgreSQL', 'details' => 'Penggunaan: Relational database management system untuk menyimpan data sistem.'],
+                ['name' => 'SQLAlchemy', 'details' => 'Penggunaan: Object Relational Mapper (ORM) untuk interaksi database yang efisien.'],
+                ['name' => 'REST API', 'details' => 'Penggunaan: Desain arsitektur komunikasi data antara frontend dan backend (JSON).']
             ],
         ],
         'projects' => [
