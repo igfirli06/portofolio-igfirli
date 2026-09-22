@@ -115,11 +115,18 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                         <h3 class="text-xl font-black uppercase text-[#540b0e] border-b-4 border-black pb-2 mb-4">
                             <?= htmlspecialchars($category) ?>
                         </h3>
-                        <ul class="space-y-2">
+                        <ul class="space-y-3">
                             <?php foreach (($items ?? []) as $skill): ?>
-                            <li class="flex items-center gap-2 font-bold text-gray-800">
-                                <span class="w-3 h-3 bg-[#9e2a2b] border border-black inline-block"></span>
-                                <?= htmlspecialchars($skill) ?>
+                            <li>
+                                <!-- Mengubah li biasa menjadi tombol yang bisa diklik -->
+                                <button type="button" 
+                                        onclick="openSkillModal('<?= htmlspecialchars($skill['name'], ENT_QUOTES) ?>', '<?= htmlspecialchars($skill['details'], ENT_QUOTES) ?>')"
+                                        class="flex items-center gap-2 font-bold text-gray-800 text-left w-full hover:text-[#9e2a2b] hover:translate-x-1 transition-transform cursor-pointer group">
+                                    <span class="w-3 h-3 bg-[#9e2a2b] border border-black inline-block flex-shrink-0 group-hover:bg-[#e09f3e] transition-colors"></span>
+                                    <span class="underline decoration-2 decoration-transparent group-hover:decoration-[#9e2a2b]">
+                                        <?= htmlspecialchars($skill['name']) ?>
+                                    </span>
+                                </button>
                             </li>
                             <?php endforeach; ?>
                         </ul>
@@ -128,6 +135,71 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                 <?php endforeach; ?>
             </div>
         </section>
+
+        <!-- SKILL MODAL (POPUP) -->
+        <div id="skill-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
+            <div class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow-lg max-w-md w-full relative transform scale-95 transition-transform duration-300" id="skill-modal-content">
+                <!-- Tombol Close -->
+                <button onclick="closeSkillModal()" class="absolute -top-4 -right-4 bg-[#9e2a2b] text-[#fff3b0] border-4 border-black w-10 h-10 flex items-center justify-center font-black text-xl hover:translate-x-1 hover:translate-y-1 brutal-shadow-sm transition-all z-10">
+                    X
+                </button>
+                
+                <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-3 py-1 border-2 border-black font-bold uppercase text-xs mb-3">
+                    Tech Details
+                </div>
+                <h3 id="modal-skill-title" class="text-3xl font-black uppercase text-black border-b-4 border-black pb-2 mb-4">
+                    Skill Name
+                </h3>
+                <p id="modal-skill-details" class="text-gray-800 font-medium text-lg leading-relaxed">
+                    Detail description goes here.
+                </p>
+            </div>
+        </div>
+
+        <!-- JAVASCRIPT UNTUK MODAL -->
+        <script>
+            function openSkillModal(name, details) {
+                document.getElementById('modal-skill-title').innerText = name;
+                document.getElementById('modal-skill-details').innerText = details;
+                
+                const modal = document.getElementById('skill-modal');
+                const modalContent = document.getElementById('skill-modal-content');
+                
+                // Menampilkan modal dengan efek transisi
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                
+                // Sedikit delay agar transisi CSS berjalan
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalContent.classList.remove('scale-95');
+                    modalContent.classList.add('scale-100');
+                }, 10);
+            }
+
+            function closeSkillModal() {
+                const modal = document.getElementById('skill-modal');
+                const modalContent = document.getElementById('skill-modal-content');
+                
+                // Memulai animasi keluar
+                modal.classList.add('opacity-0');
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+                
+                // Menyembunyikan modal setelah animasi selesai
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            }
+            
+            // Menutup modal jika user mengklik area luar (background gelap)
+            document.getElementById('skill-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeSkillModal();
+                }
+            });
+        </script>
 
         <!-- PROJECTS SECTION -->
         <section id="projects" class="space-y-8">
