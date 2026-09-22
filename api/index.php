@@ -77,15 +77,29 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     <!-- MAIN CONTENT -->
     <main class="max-w-5xl mx-auto space-y-24 pb-20">
 
-        <!-- ABOUT SECTION -->
-        <section id="about" class="bg-white border-4 border-black p-8 brutal-shadow relative">
-            <div class="absolute -top-6 left-6 bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
-                01 Who Am I?
+        <!-- ABOUT SECTION WITH PHOTO -->
+        <section id="about" class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-stretch">
+            
+            <!-- FOTO SAYA (KIRI) -->
+            <div class="md:col-span-4 bg-white border-4 border-black p-4 brutal-shadow flex items-center justify-center relative">
+                <div class="w-full h-full min-h-[220px] bg-[#fff3b0] border-2 border-black p-2 flex items-center justify-center overflow-hidden">
+                    <img src="<?= htmlspecialchars($data['photo_url'] ?? 'pixel-art.jpg') ?>" 
+                         alt="Foto Profil Pixel Art" 
+                         class="w-full h-auto max-h-64 object-contain">
+                </div>
             </div>
-            <h2 class="text-3xl font-black uppercase text-black mb-4 mt-2">About Me</h2>
-            <p class="text-lg leading-relaxed text-gray-800 font-medium">
-                <?= htmlspecialchars($data['about'] ?? 'Data profil sedang disiapkan...') ?>
-            </p>
+
+            <!-- ABOUT ME (KANAN) -->
+            <div class="md:col-span-8 bg-white border-4 border-black p-8 brutal-shadow relative flex flex-col justify-center">
+                <div class="absolute -top-6 left-6 bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+                    01 Who Am I?
+                </div>
+                <h2 class="text-3xl font-black uppercase text-black mb-4 mt-2">About Me</h2>
+                <p class="text-lg leading-relaxed text-gray-800 font-medium">
+                    <?= htmlspecialchars($data['about'] ?? 'Data profil sedang disiapkan...') ?>
+                </p>
+            </div>
+
         </section>
 
         <!-- SKILLS SECTION -->
