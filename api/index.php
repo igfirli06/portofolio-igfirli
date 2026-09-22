@@ -24,7 +24,6 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     <style>
         body { font-family: 'Space Grotesk', sans-serif; background-color: #fff3b0; }
         h1, h2, h3 { font-family: 'Syne', sans-serif; }
-        .hero-bg { background-image: url("static/fullstcak.png"); background-blend-mode: multiply; }
         .brutal-shadow { box-shadow: 8px 8px 0px 0px #000000; }
         .brutal-shadow-sm { box-shadow: 4px 4px 0px 0px #000000; }
         .brutal-shadow-lg { box-shadow: 12px 12px 0px 0px #000000; }
@@ -81,7 +80,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         <!-- ABOUT SECTION -->
         <section id="about" class="bg-white border-4 border-black p-8 brutal-shadow relative">
             <div class="absolute -top-6 left-6 bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
-                01 // Who Am I?
+                01 Who Am I?
             </div>
             <h2 class="text-3xl font-black uppercase text-black mb-4 mt-2">About Me</h2>
             <p class="text-lg leading-relaxed text-gray-800 font-medium">
@@ -92,7 +91,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         <!-- SKILLS SECTION -->
         <section id="skills" class="space-y-6">
             <div class="inline-block bg-[#e09f3e] text-black px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
-                02 // Tech Stack
+                02 Tech Stack
             </div>
             <h2 class="text-4xl font-black uppercase text-black">Technical Expertise</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -119,7 +118,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         <!-- PROJECTS SECTION -->
         <section id="projects" class="space-y-8">
             <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
-                03 // Selected Projects
+                03 Selected Projects
             </div>
             <h2 class="text-4xl font-black uppercase text-black">Production Code</h2>
             <div class="space-y-12">
