@@ -216,58 +216,72 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         </script>
 
         <!-- PROJECTS SECTION -->
-        <section id="projects" class="space-y-8">
-            <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
-                03 Selected Projects
-            </div>
-            <h2 class="text-4xl font-black uppercase text-black">Production Code</h2>
-            <div class="space-y-12">
-                <?php foreach (($data['projects'] ?? []) as $index => $project): ?>
-                <article class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow space-y-6">
-                    <div class="flex flex-wrap justify-between items-start gap-4 border-b-4 border-black pb-4">
-                        <div>
-                            <span class="text-xs font-bold uppercase tracking-widest text-[#335c67]">Project #0<?= $index + 1 ?></span>
-                            <h3 class="text-2xl md:text-3xl font-black uppercase text-black">
-                                <?= htmlspecialchars($project['title'] ?? 'Unknown Project') ?>
-                            </h3>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            <?php if (!empty($project['url'])): ?>
-                            <a href="<?= htmlspecialchars($project['url']) ?>" target="_blank" class="bg-[#e09f3e] text-black font-bold text-sm uppercase px-4 py-2 border-2 border-black brutal-shadow-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
-                                🌐 Live App
-                            </a>
-                            <?php endif; ?>
-                            <?php if (!empty($project['github'])): ?>
-                            <a href="<?= htmlspecialchars($project['github']) ?>" target="_blank" class="bg-black text-white font-bold text-sm uppercase px-4 py-2 border-2 border-black brutal-shadow-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
-                                💻 GitHub
-                            </a>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <p class="text-gray-800 font-medium">
-                        <?= htmlspecialchars($project['desc'] ?? '') ?>
-                    </p>
-                    <div class="bg-[#fff3b0] border-2 border-black p-3 font-mono text-sm font-bold text-[#540b0e]">
-                        TECH: <?= htmlspecialchars($project['tech'] ?? '') ?>
-                    </div>
-                    <?php if (!empty($project['pipeline'])): ?>
-                    <div class="space-y-3 pt-2">
-                        <h4 class="font-black uppercase text-xs tracking-wider text-gray-500">// Pipeline Execution</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2">
-                            <?php foreach ($project['pipeline'] as $pipe): ?>
-                            <div class="bg-gray-100 border-2 border-black p-2 text-center">
-                                <span class="block text-xs font-black text-[#9e2a2b]"><?= htmlspecialchars($pipe['step'] ?? '') ?></span>
-                                <span class="block font-bold text-xs uppercase text-black"><?= htmlspecialchars($pipe['label'] ?? '') ?></span>
-                                <span class="block text-[10px] text-gray-600"><?= htmlspecialchars($pipe['sub'] ?? '') ?></span>
-                            </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
+<section id="projects" class="space-y-8">
+    <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+        03 Selected Projects
+    </div>
+    <h2 class="text-3xl md:text-4xl font-black uppercase text-black">Production Code</h2>
+    
+    <div class="space-y-12">
+        <?php foreach (($data['projects'] ?? []) as $index => $project): ?>
+        <article class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow space-y-6">
+            
+            <!-- HEADER PROJECT -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b-4 border-black pb-4">
+                <div class="space-y-1">
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#335c67]">Project #0<?= $index + 1 ?></span>
+                    <!-- Font size disesuaikan agar tidak melar/sesak -->
+                    <h3 class="text-xl md:text-2xl font-black uppercase text-black leading-tight">
+                        <?= htmlspecialchars($project['title'] ?? 'Unknown Project') ?>
+                    </h3>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 flex-shrink-0">
+                    <?php if (!empty($project['url'])): ?>
+                    <a href="<?= htmlspecialchars($project['url']) ?>" target="_blank" class="bg-[#e09f3e] text-black font-bold text-xs md:text-sm uppercase px-4 py-2 border-2 border-black brutal-shadow-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-1">
+                        🌐 Live App
+                    </a>
                     <?php endif; ?>
-                </article>
-                <?php endforeach; ?>
+                    <?php if (!empty($project['github'])): ?>
+                    <a href="<?= htmlspecialchars($project['github']) ?>" target="_blank" class="bg-black text-white font-bold text-xs md:text-sm uppercase px-4 py-2 border-2 border-black brutal-shadow-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-1">
+                        💻 GitHub
+                    </a>
+                    <?php endif; ?>
+                </div>
             </div>
-        </section>
+
+            <!-- DESKRIPSI -->
+            <p class="text-base md:text-lg leading-relaxed text-gray-800 font-medium">
+                <?= htmlspecialchars($project['desc'] ?? '') ?>
+            </p>
+
+            <!-- TECH STACK BADGE -->
+            <div class="bg-[#fff3b0] border-2 border-black p-3 font-mono text-xs md:text-sm font-bold text-[#540b0e]">
+                ⚡ TECH: <?= htmlspecialchars($project['tech'] ?? '') ?>
+            </div>
+
+            <!-- PIPELINE EXECUTION (REDESIGN) -->
+            <?php if (!empty($project['pipeline'])): ?>
+            <div class="space-y-3 pt-2">
+                <h4 class="font-black uppercase text-xs tracking-wider text-gray-500">// Pipeline Execution Flow</h4>
+                
+                <!-- Layout responsif: 1 kolom di HP, Flex/Grid leluasa di layar sedang/besar -->
+                <div class="flex flex-col md:flex-row flex-wrap items-stretch justify-between gap-2">
+                    <?php foreach ($project['pipeline'] as $pipeIdx => $pipe): ?>
+                    <div class="flex-1 min-w-[140px] bg-gray-50 border-2 border-black p-3 text-center flex flex-col justify-center relative">
+                        <span class="text-xs font-black text-[#9e2a2b] mb-1"><?= htmlspecialchars($pipe['step'] ?? '') ?></span>
+                        <span class="font-black text-xs uppercase text-black leading-snug mb-1"><?= htmlspecialchars($pipe['label'] ?? '') ?></span>
+                        <span class="text-[10px] text-gray-600 font-medium"><?= htmlspecialchars($pipe['sub'] ?? '') ?></span>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+        </article>
+        <?php endforeach; ?>
+    </div>
+</section>
     </main>
 
     <!-- FOOTER WITH WALKING CAT ANIMATION -->
