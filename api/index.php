@@ -43,16 +43,17 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
 </head>
 <body class="text-[#540b0e] antialiased selection:bg-[#9e2a2b] selection:text-white p-4 md:p-8 overflow-x-hidden">
 
-    <!-- NAVBAR (Gaya sesuai gambar: Gelap, Teks Uppercase, Garis Pemisah Vertical) -->
     <nav class="sticky top-0 z-50 bg-[#1e2749] border-4 border-black brutal-shadow-sm mb-6 px-6 py-4">
-        <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-4 md:gap-x-8 gap-y-2 text-white font-bold text-sm tracking-wider uppercase">
-            <a href="#about" class="hover:text-[#e09f3e] transition-colors">ABOUT</a>
-            <span class="text-gray-400 font-normal">|</span>
-            <a href="#skills" class="hover:text-[#e09f3e] transition-colors">TECH STACK</a>
-            <span class="text-gray-400 font-normal">|</span>
-            <a href="#projects" class="hover:text-[#e09f3e] transition-colors">PROJECTS</a>
-        </div>
-    </nav>
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-4 md:gap-x-8 gap-y-2 text-white font-bold text-sm tracking-wider uppercase">
+        <a href="#about" class="hover:text-[#e09f3e] transition-colors">ABOUT</a>
+        <span class="text-gray-400 font-normal">|</span>
+        <a href="#skills" class="hover:text-[#e09f3e] transition-colors">TECH STACK</a>
+        <span class="text-gray-400 font-normal">|</span>
+        <a href="#certificates" class="hover:text-[#e09f3e] transition-colors">CERTIFICATES</a>
+        <span class="text-gray-400 font-normal">|</span>
+        <a href="#projects" class="hover:text-[#e09f3e] transition-colors">PROJECTS</a>
+    </div>
+</nav>
 
     <!-- HERO HEADER -->
     <header class="relative w-full min-h-[95vh] bg-[#335c67] border-4 border-black brutal-shadow-lg flex items-center justify-center p-6 md:p-12 mb-16 overflow-hidden">
