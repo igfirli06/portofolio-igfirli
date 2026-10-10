@@ -11,6 +11,24 @@ function getPortfolioData(): array
         'about' => 'Information Technology professional with a strong background in Python programming, Artificial Intelligence (AI), Machine Learning, and Cloud Computing. '
                  . 'Experienced in core AI pillars including Rule-based Expert Systems, Neural Networks, and Deep Learning, alongside cloud infrastructure management following graduation from the AWS re/Start Batch 15 program. '
                  . 'Committed to building innovative, scalable cloud and AI software solutions while fostering strong cross-cultural communication and team collaboration.',
+        // --- DATA SERTIFIKAT ---
+        'certificates' => [
+            [
+                'title' => 'AWS re/Start Graduate Certificate',
+                'issuer' => 'Amazon Web Services (AWS)',
+                'date' => 'Oktober 2026',
+                'image' => 'static/aws-restart-cert.png', // Ganti dengan nama file gambar sertifikatmu di folder static
+                'credential_url' => '#' // Masukkan link kredensial/verify jika ada
+            ],
+            [
+                'title' => 'AWS Certified Cloud Practitioner',
+                'issuer' => 'Amazon Web Services (AWS)',
+                'date' => '2026',
+                'image' => 'static/aws-ccp-cert.png', // Contoh sertifikat kedua
+                'credential_url' => '#'
+            ],
+            // Kamu bisa menambah sertifikat lainnya di sini dengan format yang sama
+        ],
         'skills' => [
             'AWS & Cloud Computing' => [
                 ['name' => 'AWS re/Start Graduate', 'details' => 'Lulusan program pelatihan intensif AWS Cloud Computing (Batch 15, Agustus - Oktober 2026).'],
