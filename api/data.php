@@ -14,11 +14,18 @@ function getPortfolioData(): array
         // --- DATA SERTIFIKAT ---
         'certificates' => [
             [
+                'title' => 'Learn the basic of SQL with Google Big query ',
+                'issuer' => 'Digica Academy',
+                'date' => '2026',
+                'image' => 'static/basic_SQL.png', 
+                'credential_url' => '#' 
+            ],
+            [
                 'title' => 'AWS re/Start Graduate Certificate',
                 'issuer' => 'Amazon Web Services (AWS)',
-                'date' => 'Oktober 2026',
-                'image' => 'static/aws-restart-cert.png', // Ganti dengan nama file gambar sertifikatmu di folder static
-                'credential_url' => '#' // Masukkan link kredensial/verify jika ada
+                'date' => '2026',
+                'image' => 'static/aws-restart-cert.png', 
+                'credential_url' => '#' 
             ],
             [
                 'title' => 'Magang Wajib',
@@ -31,7 +38,7 @@ function getPortfolioData(): array
                 'title' => 'Magang Dan Studi Independen Bersertifikat (MSIB)',
                 'issuer' => 'PT. Artifisal Intelegensia Indonesia',
                 'date' => '2024',
-                'image' => 'static/msib.jpg', // Contoh sertifikat kedua
+                'image' => 'static/msib.jpg', 
                 'credential_url' => '#'
             ],
         ],
