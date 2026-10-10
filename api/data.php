@@ -21,10 +21,10 @@ function getPortfolioData(): array
                 'credential_url' => '#' // Masukkan link kredensial/verify jika ada
             ],
             [
-                'title' => 'AWS Certified Cloud Practitioner',
-                'issuer' => 'Amazon Web Services (AWS)',
-                'date' => '2026',
-                'image' => 'static/aws-ccp-cert.png', // Contoh sertifikat kedua
+                'title' => 'Magang Dan Studi Independen Bersertifikat (MSIB)',
+                'issuer' => 'PT. Artifisal Intelegensia Indonesia',
+                'date' => '2024',
+                'image' => 'static/msib.jpg', // Contoh sertifikat kedua
                 'credential_url' => '#'
             ],
             // Kamu bisa menambah sertifikat lainnya di sini dengan format yang sama
