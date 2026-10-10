@@ -21,13 +21,19 @@ function getPortfolioData(): array
                 'credential_url' => '#' // Masukkan link kredensial/verify jika ada
             ],
             [
+                'title' => 'Magang Wajib',
+                'issuer' => 'PT. Kutai Timber Indonesia',
+                'date' => '2025',
+                'image' => 'static/KTI1.jpg', 
+                'credential_url' => '#'
+            ],
+            [
                 'title' => 'Magang Dan Studi Independen Bersertifikat (MSIB)',
                 'issuer' => 'PT. Artifisal Intelegensia Indonesia',
                 'date' => '2024',
                 'image' => 'static/msib.jpg', // Contoh sertifikat kedua
                 'credential_url' => '#'
             ],
-            // Kamu bisa menambah sertifikat lainnya di sini dengan format yang sama
         ],
         'skills' => [
             'AWS & Cloud Computing' => [
