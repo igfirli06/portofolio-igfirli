@@ -215,9 +215,51 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                 }
             });
         </script>
+<!-- CERTIFICATES SECTION -->
+        <section id="certificates" class="space-y-6">
+            <div class="inline-block bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+                03 Licenses & Certifications
+            </div>
+            <h2 class="text-4xl font-black uppercase text-black">Certifications</h2>
 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php foreach (($data['certificates'] ?? []) as $cert): ?>
+                <div class="bg-white border-4 border-black brutal-shadow flex flex-col justify-between overflow-hidden hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                    <!-- GAMBAR SERTIFIKAT -->
+                    <div class="border-b-4 border-black bg-gray-100 aspect-video relative overflow-hidden">
+                        <img src="<?= htmlspecialchars($cert['image']) ?>" 
+                             alt="<?= htmlspecialchars($cert['title']) ?>" 
+                             class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- DESKRIPSI CARD -->
+                    <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+                        <div>
+                            <span class="inline-block bg-[#e09f3e] text-black text-xs font-bold uppercase px-2 py-0.5 border border-black mb-2">
+                                <?= htmlspecialchars($cert['date']) ?>
+                            </span>
+                            <h3 class="text-xl font-black uppercase text-black leading-tight">
+                                <?= htmlspecialchars($cert['title']) ?>
+                            </h3>
+                            <p class="text-sm font-bold text-gray-600 mt-1">
+                                <?= htmlspecialchars($cert['issuer']) ?>
+                            </p>
+                        </div>
+
+                        <?php if (!empty($cert['credential_url']) && $cert['credential_url'] !== '#'): ?>
+                        <a href="<?= htmlspecialchars($cert['credential_url']) ?>" 
+                           target="_blank" 
+                           class="inline-block text-center bg-[#335c67] text-white font-bold uppercase text-sm px-4 py-2 border-2 border-black brutal-shadow-sm hover:bg-[#540b0e] transition-colors">
+                            Verify Credential ↗
+                        </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
         <!-- PROJECTS SECTION -->
-<section id="projects" class="space-y-8">
+<section id="projects"  class="space-y-8">
     <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
         03 Selected Projects
     </div>
