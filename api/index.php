@@ -216,7 +216,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
             });
         </script>
 <!-- CERTIFICATES SECTION -->
-        <section id="certificates" class="space-y-6">
+        <section id="certificates" class="scroll-mt-24 space-y-6">
             <div class="inline-block bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
                 03 Licenses & Certifications
             </div>
@@ -259,7 +259,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
             </div>
         </section>
         <!-- PROJECTS SECTION -->
-<section id="projects"  class="space-y-8">
+<section id="projects"  class="scroll-mt-24 space-y-8">
     <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
         03 Selected Projects
     </div>
