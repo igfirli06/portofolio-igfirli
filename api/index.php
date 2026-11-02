@@ -102,7 +102,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     <main class="max-w-5xl mx-auto space-y-24 pb-20">
 
         <!-- ABOUT SECTION WITH PHOTO -->
-        <section id="about" class="grid grid-cols-1 md:grid-cols-12 items-stretch">
+        <section id="about" class="scroll-mt-24 grid grid-cols-1 md:grid-cols-12 items-stretch">
             
             <!-- FOTO SAYA (KIRI) -->
             <div class="md:col-span-4 bg-white border-4 border-black brutal-shadow relative min-h-[256px]">
@@ -125,7 +125,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         </section>
 
         <!-- SKILLS SECTION -->
-        <section id="skills" class="space-y-6">
+        <section id="skills" class="scroll-mt-24 space-y-6">
             <div class="inline-block bg-[#e09f3e] text-black px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
                 02 Tech Stack
             </div>
