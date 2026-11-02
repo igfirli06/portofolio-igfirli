@@ -73,7 +73,6 @@ function getPortfolioData(): array
                 'tech' => 'AWS EC2, S3, VPC, IAM, RDS, CloudFormation',
                 'desc' => 'Implementasi arsitektur cloud aman dan skalabel sebagai bagian dari program pelatihan intensif AWS re/Start Batch 15.',
                 
-                'github' => 'https://github.com/igfirli06',
                 'pipeline' => [
                     ['step' => '01', 'label' => 'VPC Design', 'sub' => 'Public & Private Subnets'],
                     ['step' => '02', 'label' => 'IAM Security', 'sub' => 'Role & Least Privilege'],
