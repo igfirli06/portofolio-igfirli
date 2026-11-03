@@ -16,8 +16,8 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 
-        google-site-verification" content="X3I76CVzYzSEdXih15DD80eUq1FF0Zs0lJ4De-pUyM0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="X3I76CVzYzSEdXih15DD80eUq1FF0Zs0lJ4De-pUyM0">
     <title>Portofolio | <?= htmlspecialchars($data['name'] ?? 'Igfirlii') ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
