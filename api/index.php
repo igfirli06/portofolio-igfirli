@@ -23,41 +23,6 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== HERO PAS SATU LAYAR (hanya ukuran) ===== */
-    .hero-fit {
-        height: calc(100dvh - 8rem);   /* fallback, disempurnakan oleh script di bawah */
-        min-height: 0 !important;
-        padding: clamp(.75rem, 3vh, 3rem) !important;
-    }
-    .hero-fit .hero-badge {
-        font-size: clamp(.65rem, 1.9vh, .875rem) !important;
-        padding: clamp(.25rem, .9vh, .5rem) clamp(.6rem, 2vh, 1rem) !important;
-        margin-bottom: clamp(.5rem, 2.5vh, 1.5rem) !important;
-    }
-    .hero-fit .hero-title {
-        font-size: clamp(1.5rem, min(7.5vh, 11vw), 6rem) !important;
-        padding: clamp(.5rem, 2.2vh, 1.5rem) !important;
-        margin-bottom: clamp(.5rem, 2.5vh, 1.5rem) !important;
-    }
-    .hero-fit .hero-role-box {
-        padding: clamp(.4rem, 1.6vh, 1rem) !important;
-        margin-bottom: clamp(.5rem, 3vh, 2rem) !important;
-    }
-    .hero-fit .hero-role { font-size: clamp(.85rem, 3vh, 1.5rem) !important; }
-    .hero-fit .hero-actions {
-        gap: clamp(.5rem, 1.6vh, 1rem) !important;
-        margin-bottom: clamp(.5rem, 2.5vh, 2rem) !important;
-    }
-    .hero-fit .hero-btn {
-        font-size: clamp(.8rem, 2.6vh, 1.25rem) !important;
-        padding: clamp(.4rem, 1.8vh, 1rem) clamp(.8rem, 3vh, 2rem) !important;
-    }
-    .hero-fit .hero-social { margin-top: 0 !important; }
-    .hero-fit .hero-social a { padding: clamp(.4rem, 1.4vh, .75rem) !important; }
-    .hero-fit .hero-social svg {
-        width: clamp(1rem, 3vh, 1.5rem) !important;
-        height: clamp(1rem, 3vh, 1.5rem) !important;
-    }
         body { font-family: 'Space Grotesk', sans-serif; background-color: #fff3b0; }
         h1, h2, h3 { font-family: 'Syne', sans-serif; }
         .brutal-shadow { box-shadow: 8px 8px 0px 0px #000000; }
@@ -74,6 +39,42 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         }
         .pixelated {
             image-rendering: pixelated;
+        }
+
+        /* ===== HERO PAS SATU LAYAR (hanya ukuran) ===== */
+        .hero-fit {
+            height: calc(100dvh - 8rem);   /* fallback, disempurnakan oleh script fitHero() */
+            min-height: 0 !important;
+            padding: clamp(.75rem, 3vh, 3rem) !important;
+        }
+        .hero-fit .hero-badge {
+            font-size: clamp(.65rem, 1.9vh, .875rem) !important;
+            padding: clamp(.25rem, .9vh, .5rem) clamp(.6rem, 2vh, 1rem) !important;
+            margin-bottom: clamp(.5rem, 2.5vh, 1.5rem) !important;
+        }
+        .hero-fit .hero-title {
+            font-size: clamp(1.5rem, min(7.5vh, 11vw), 6rem) !important;
+            padding: clamp(.5rem, 2.2vh, 1.5rem) !important;
+            margin-bottom: clamp(.5rem, 2.5vh, 1.5rem) !important;
+        }
+        .hero-fit .hero-role-box {
+            padding: clamp(.4rem, 1.6vh, 1rem) !important;
+            margin-bottom: clamp(.5rem, 3vh, 2rem) !important;
+        }
+        .hero-fit .hero-role { font-size: clamp(.85rem, 3vh, 1.5rem) !important; }
+        .hero-fit .hero-actions {
+            gap: clamp(.5rem, 1.6vh, 1rem) !important;
+            margin-bottom: clamp(.5rem, 2.5vh, 2rem) !important;
+        }
+        .hero-fit .hero-btn {
+            font-size: clamp(.8rem, 2.6vh, 1.25rem) !important;
+            padding: clamp(.4rem, 1.8vh, 1rem) clamp(.8rem, 3vh, 2rem) !important;
+        }
+        .hero-fit .hero-social { margin-top: 0 !important; }
+        .hero-fit .hero-social a { padding: clamp(.4rem, 1.4vh, .75rem) !important; }
+        .hero-fit .hero-social svg {
+            width: clamp(1rem, 3vh, 1.5rem) !important;
+            height: clamp(1rem, 3vh, 1.5rem) !important;
         }
     </style>
 </head>
@@ -92,35 +93,35 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
 </nav>
 
     <!-- HERO HEADER -->
-    <header class="relative w-full min-h-[95vh] bg-[#335c67] border-4 border-black brutal-shadow-lg flex items-center justify-center p-6 md:p-12 mb-16 overflow-hidden">
+    <header id="hero" class="hero-fit relative w-full bg-[#335c67] border-4 border-black brutal-shadow-lg flex items-center justify-center mb-16 overflow-hidden">
         <div class="absolute inset-0 hero-bg bg-cover bg-center opacity-20 filter grayscale"></div>
         <div class="relative z-10 text-center max-w-3xl">
-            <span class="inline-block bg-[#e09f3e] text-black text-sm font-bold uppercase tracking-wider px-4 py-2 border-2 border-black brutal-shadow-sm -rotate-2 mb-6">
+            <span class="hero-badge inline-block bg-[#e09f3e] text-black text-sm font-bold uppercase tracking-wider px-4 py-2 border-2 border-black brutal-shadow-sm -rotate-2 mb-6">
                 Available for Hire // 2026
             </span>
-            <h1 class="text-5xl md:text-8xl font-black text-[#fff3b0] uppercase tracking-tighter leading-none mb-6 border-4 border-black bg-[#540b0e] p-6 brutal-shadow rotate-1">
+            <h1 class="hero-title text-5xl md:text-8xl font-black text-[#fff3b0] uppercase tracking-tighter leading-none mb-6 border-4 border-black bg-[#540b0e] p-6 brutal-shadow rotate-1">
                 <?= htmlspecialchars($data['name'] ?? 'Your Name') ?>
             </h1>
-            <div class="bg-white border-4 border-black p-4 brutal-shadow -rotate-1 inline-block mb-8">
-                <p class="text-xl md:text-2xl font-bold text-black uppercase">
+            <div class="hero-role-box bg-white border-4 border-black p-4 brutal-shadow -rotate-1 inline-block mb-8">
+                <p class="hero-role text-xl md:text-2xl font-bold text-black uppercase">
                     [ <?= htmlspecialchars($data['role'] ?? 'Software Engineer') ?> ]
                 </p>
             </div>
 
             <!-- ACTION BUTTONS -->
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <a href="#about" class="inline-block bg-[#9e2a2b] text-[#fff3b0] text-xl font-bold uppercase px-8 py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+            <div class="hero-actions flex flex-wrap justify-center gap-4 mb-8">
+                <a href="#about" class="hero-btn inline-block bg-[#9e2a2b] text-[#fff3b0] text-xl font-bold uppercase px-8 py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
                     Let's Build.exe →
                 </a>
                 <?php if (!empty($data['cv_link'])): ?>
-                <a href="<?= htmlspecialchars($data['cv_link']) ?>" target="_blank" download class="inline-block bg-[#e09f3e] text-black text-xl font-bold uppercase px-8 py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+                <a href="<?= htmlspecialchars($data['cv_link']) ?>" target="_blank" download class="hero-btn inline-block bg-[#e09f3e] text-black text-xl font-bold uppercase px-8 py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
                     📄 Download CV (PDF)
                 </a>
                 <?php endif; ?>
             </div>
 
             <!-- SOCIAL LINKS -->
-            <div class="flex justify-center gap-4 mt-2">
+            <div class="hero-social flex justify-center gap-4 mt-2">
                 <a href="https://github.com/igfirli06" target="_blank" class="p-3 bg-white border-4 border-black brutal-shadow-sm text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                 </a>
@@ -378,6 +379,19 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         </div>
         
     </footer>
+
+    <!-- HERO PAS SATU LAYAR: hitung tinggi dari sisa layar di bawah navbar -->
+    <script>
+        function fitHero() {
+            const hero = document.getElementById('hero');
+            if (!hero) return;
+            const top = hero.getBoundingClientRect().top + window.scrollY;
+            // 12px = ruang bayangan brutal-shadow-lg agar tidak terpotong
+            hero.style.height = Math.max(0, window.innerHeight - top - 12) + 'px';
+        }
+        window.addEventListener('load', fitHero);
+        window.addEventListener('resize', fitHero);
+    </script>
 
 </body>
 </html>
