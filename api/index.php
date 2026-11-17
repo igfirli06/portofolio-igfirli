@@ -325,7 +325,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                 <div class="space-y-1 min-w-0">
                     <span class="text-xs font-bold uppercase tracking-widest text-[#335c67]">Project #0<?= $index + 1 ?></span>
                     <h3 class="text-xl md:text-2xl font-black uppercase text-black leading-tight break-words">
-                        <a href="project.php?id=<?= (int)$index ?>"
+                        <a href="/project/<?= (int)$index ?>"
                            class="group-hover:text-[#9e2a2b] after:content-[''] after:absolute after:inset-0 focus-visible:outline focus-visible:outline-4 focus-visible:outline-[#e09f3e]">
                             <?= htmlspecialchars($project['title'] ?? 'Unknown Project') ?>
                         </a>
