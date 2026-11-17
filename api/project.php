@@ -1,5 +1,5 @@
 <?php
-// Halaman detail project (gaya halaman berita): project.php?id=0, project.php?id=1, dst.
+// Halaman detail project (gaya halaman berita): /project/0, /project/1, dst.
 // id = urutan project di data.php (mulai dari 0)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -19,9 +19,9 @@ $rawId = $_GET['id'] ?? null;
 if ($rawId === null && preg_match('~/project/(\d+)~', $_SERVER['REQUEST_URI'] ?? '', $mUri)) {
     $rawId = $mUri[1]; // cadangan jika query string tidak terbawa
 }
-$id      = filter_var($rawId, FILTER_VALIDATE_INT);
+$id = filter_var($rawId, FILTER_VALIDATE_INT);
 if ($id === false) { $id = null; }
-$project = ($id !== null && $id !== false && isset($projects[$id])) ? $projects[$id] : null;
+$project = ($id !== null && isset($projects[$id])) ? $projects[$id] : null;
 
 if ($project === null) {
     http_response_code(404);
@@ -30,26 +30,26 @@ if ($project === null) {
 $prevId = ($project !== null && $id > 0) ? $id - 1 : null;
 $nextId = ($project !== null && $id < $total - 1) ? $id + 1 : null;
 
-// ===== VIDEO (opsional) =====
-// Di data.php isi key 'video' dengan:
-//  - link YouTube  (watch?v=..., youtu.be/..., embed/..., shorts/...)
-//  - atau file video, contoh: 'static/video-udang.mp4'
-$videoSrc  = trim($project['video'] ?? '');
-$videoType = null; // 'youtube' | 'file'
-$youtubeId = null;
-
-if ($videoSrc !== '') {
-    if (preg_match('~(?:youtu\.be/|youtube\.com/(?:watch\?v=|embed/|shorts/))([A-Za-z0-9_-]{11})~', $videoSrc, $m)) {
-        $videoType = 'youtube';
-        $youtubeId = $m[1];
-    } else {
-        $videoType = 'file';
-        // Halaman ini ada di /project/N, jadi path relatif harus diawali "/"
-        if (!preg_match('~^(https?:)?//~', $videoSrc) && $videoSrc[0] !== '/') {
-            $videoSrc = '/' . $videoSrc;
-        }
-    }
+// ===== FOTO (opsional) =====
+// Di data.php isi salah satu:
+//  - 'image'  => 'static/foto-udang.jpg'                  (1 foto)
+//  - 'images' => ['static/a.jpg', 'static/b.jpg', ...]    (beberapa foto)
+$images = [];
+if (!empty($project['images']) && is_array($project['images'])) {
+    $images = $project['images'];
+} elseif (!empty($project['image'])) {
+    $images = [$project['image']];
 }
+
+// Halaman ini ada di /project/N, jadi path relatif harus diawali "/"
+$images = array_values(array_filter(array_map(function ($src) {
+    $src = trim((string)$src);
+    if ($src === '') return null;
+    if (!preg_match('~^(https?:)?//~', $src) && $src[0] !== '/') {
+        $src = '/' . $src;
+    }
+    return $src;
+}, $images)));
 
 // Paragraf tambahan (opsional): 'article' => ['paragraf 1', 'paragraf 2']
 $articleParagraphs = $project['article'] ?? [];
@@ -115,31 +115,40 @@ $articleParagraphs = $project['article'] ?? [];
                 </p>
             </header>
 
-            <!-- VIDEO PROSES PROJECT -->
-            <figure class="space-y-2">
-                <div class="bg-black border-4 border-black brutal-shadow aspect-video w-full overflow-hidden">
-                    <?php if ($videoType === 'youtube'): ?>
-                        <iframe class="w-full h-full"
-                                src="https://www.youtube.com/embed/<?= htmlspecialchars($youtubeId) ?>"
-                                title="Video proses <?= htmlspecialchars($project['title'] ?? '') ?>"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                    <?php elseif ($videoType === 'file'): ?>
-                        <video class="w-full h-full" controls preload="metadata" playsinline>
-                            <source src="<?= htmlspecialchars($videoSrc) ?>">
-                            Browser kamu tidak mendukung pemutar video.
-                        </video>
-                    <?php else: ?>
-                        <div class="w-full h-full flex items-center justify-center text-center p-6 bg-[#fff3b0]">
-                            <p class="font-bold text-gray-700 text-sm md:text-lg">Video proses project ini akan segera ditambahkan.</p>
-                        </div>
-                    <?php endif; ?>
+            <!-- FOTO PROJECT -->
+            <?php if (!empty($images)): ?>
+            <figure class="space-y-4">
+                <!-- Foto utama -->
+                <div class="bg-white border-4 border-black brutal-shadow overflow-hidden">
+                    <img src="<?= htmlspecialchars($images[0]) ?>"
+                         alt="<?= htmlspecialchars($project['title'] ?? 'Foto project') ?>"
+                         class="w-full h-auto block"
+                         loading="eager">
                 </div>
+
+                <!-- Foto tambahan (jika ada) -->
+                <?php if (count($images) > 1): ?>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <?php foreach (array_slice($images, 1) as $n => $img): ?>
+                    <div class="bg-white border-4 border-black brutal-shadow-sm overflow-hidden">
+                        <img src="<?= htmlspecialchars($img) ?>"
+                             alt="<?= htmlspecialchars(($project['title'] ?? 'Foto project') . ' - ' . ($n + 2)) ?>"
+                             class="w-full h-auto block"
+                             loading="lazy">
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+
                 <figcaption class="text-xs md:text-sm font-bold text-gray-600">
-                    Video proses pembuatan: <?= htmlspecialchars($project['title'] ?? '') ?>
+                    Dokumentasi: <?= htmlspecialchars($project['title'] ?? '') ?>
                 </figcaption>
             </figure>
+            <?php else: ?>
+            <div class="bg-[#fff3b0] border-4 border-dashed border-black aspect-video w-full flex items-center justify-center text-center p-6">
+                <p class="font-bold text-gray-700 text-sm md:text-lg">Foto project ini akan segera ditambahkan.</p>
+            </div>
+            <?php endif; ?>
 
             <!-- ISI (deskripsi) -->
             <div class="space-y-4 text-base md:text-lg leading-relaxed text-gray-800 font-medium">
