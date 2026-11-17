@@ -1,6 +1,4 @@
 <?php
-// Halaman detail project (gaya halaman berita): project.php?id=0, project.php?id=1, dst.
-// id = urutan project di data.php (mulai dari 0)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -24,10 +22,7 @@ if ($project === null) {
 $prevId = ($project !== null && $id > 0) ? $id - 1 : null;
 $nextId = ($project !== null && $id < $total - 1) ? $id + 1 : null;
 
-// ===== VIDEO (opsional) =====
-// Di data.php isi key 'video' dengan:
-//  - link YouTube  (watch?v=..., youtu.be/..., embed/..., shorts/...)
-//  - atau file video, contoh: 'static/video-udang.mp4'
+
 $videoSrc  = trim($project['video'] ?? '');
 $videoType = null; // 'youtube' | 'file'
 $youtubeId = null;
