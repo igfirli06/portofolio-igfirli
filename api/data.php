@@ -1,4 +1,5 @@
 <?php
+
 function getPortfolioData(): array
 {
     return [
@@ -71,6 +72,7 @@ function getPortfolioData(): array
                 'title' => 'AWS Cloud Architecture & Infrastructure Lab',
                 'tech' => 'AWS EC2, S3, VPC, IAM, RDS, CloudFormation',
                 'desc' => 'Implementasi arsitektur cloud aman dan skalabel sebagai bagian dari program pelatihan intensif AWS re/Start Batch 15.',
+                
                 'pipeline' => [
                     ['step' => '01', 'label' => 'VPC Design', 'sub' => 'Public & Private Subnets'],
                     ['step' => '02', 'label' => 'IAM Security', 'sub' => 'Role & Least Privilege'],
@@ -116,17 +118,37 @@ function getPortfolioData(): array
                 'url' => 'https://igfirli06.github.io/people-detection-demo/',
                 'github' => 'https://github.com/igfirli06/people-detection-demo',
                 'pipeline' => [
-                    ['step' => '01', 'label' => 'INPUT STREAM (RTSP)', 'sub' => 'Kamera mengirim stream video'],
-                    ['step' => '02', 'label' => 'YOLOv8 TRACKING', 'sub' => 'Deteksi tracking_id dalam poligon'],
-                    ['step' => '03', 'label' => 'MYSQL LOGGING', 'sub' => 'Pencatatan kejadian & zona']
+                    [
+                        'step' => '01',
+                        'label' => 'INPUT STREAM (RTSP)',
+                        'sub' => 'Kamera mengirim stream video'
+                    ],
+                    [
+                        'step' => '02',
+                        'label' => 'YOLOv8 TRACKING',
+                        'sub' => 'Deteksi tracking_id dalam poligon'
+                    ],
+                    [
+                        'step' => '03',
+                        'label' => 'MYSQL LOGGING',
+                        'sub' => 'Pencatatan kejadian & zona'
+                    ]
                 ],
                 'decision' => [
                     'label' => 'FLASK REAL-TIME DASHBOARD',
                     'formula' => 'Render Video Anotasi + Tabel Event'
                 ],
                 'branches' => [
-                    ['cond' => 'STATUS KARYAWAN', 'type' => 'yes', 'result' => 'MASUK / TERCATAT'],
-                    ['cond' => 'KONDISI ZONA', 'type' => 'no', 'result' => 'AMAN / KOSONG']
+                    [
+                        'cond' => 'STATUS KARYAWAN',
+                        'type' => 'yes',
+                        'result' => 'MASUK / TERCATAT'
+                    ],
+                    [
+                        'cond' => 'KONDISI ZONA',
+                        'type' => 'no',
+                        'result' => 'AMAN / KOSONG'
+                    ]
                 ]
             ],
             [
@@ -174,101 +196,3 @@ function getPortfolioData(): array
         ],
     ];
 }
-
-$data = getPortfolioData();
-?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - <?= htmlspecialchars($data['name']) ?></title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            height: 100%;
-            width: 100%;
-            font-family: sans-serif;
-            background-color: #2c525f;
-            color: #fff;
-        }
-
-        /* Mengatur agar setiap section pas satu layar penuh tanpa overflow aneh */
-        section {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            overflow-y: auto;
-        }
-
-        /* Hero Section Styling */
-        .hero-section {
-            background-color: #2c525f;
-        }
-
-        .badge {
-            background-color: #e09f3e;
-            color: #000;
-            padding: 0.4rem 1rem;
-            font-weight: bold;
-            font-size: clamp(0.7rem, 1.2vw, 1rem);
-            margin-bottom: 1rem;
-            border: 2px solid #000;
-            box-shadow: 3px 3px 0px #000;
-        }
-
-        .hero-title-box {
-            background-color: #58181f;
-            border: 3px solid #000;
-            box-shadow: 5px 5px 0px #000;
-            padding: 1.5rem 3rem;
-            text-align: center;
-            max-width: 90%;
-        }
-
-        /* Menggunakan clamp agar ukuran font responsif dan pas di layar */
-        .hero-title {
-            font-size: clamp(1.8rem, 4.5vw, 4rem);
-            font-weight: 900;
-            color: #fcf6bd;
-            line-height: 1.1;
-            text-transform: uppercase;
-        }
-
-        .hero-subtitle-box {
-            background-color: #fff;
-            color: #000;
-            border: 3px solid #000;
-            box-shadow: 4px 4px 0px #000;
-            padding: 0.6rem 1.5rem;
-            margin-top: 1.5rem;
-            font-weight: bold;
-            font-size: clamp(0.8rem, 1.5vw, 1.2vw);
-        }
-    </style>
-</head>
-<body>
-
-    <section class="hero-section">
-        <div class="badge">AVAILABLE FOR HIRE // 2026</div>
-        
-        <div class="hero-title-box">
-            <h1 class="hero-title"><?= htmlspecialchars($data['name']) ?></h1>
-        </div>
-
-        <div class="hero-subtitle-box">
-            [ <?= htmlspecialchars($data['role']) ?> ]
-        </div>
-    </section>
-
-</body>
-</html>
