@@ -34,6 +34,7 @@ $nextId = ($project !== null && $id < $total - 1) ? $id + 1 : null;
 // Di data.php isi salah satu:
 //  - 'image'  => 'static/foto-udang.jpg'                  (1 foto)
 //  - 'images' => ['static/a.jpg', 'static/b.jpg', ...]    (beberapa foto)
+
 $images = [];
 if (!empty($project['images']) && is_array($project['images'])) {
     $images = $project['images'];
