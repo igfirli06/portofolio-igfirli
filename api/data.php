@@ -4,7 +4,7 @@ function getPortfolioData(): array
 {
     return [
         'name' => 'Igfirlii Nuur Aziiza',
-        'role' => 'Junior Python & Cloud Developer',
+        'role' => 'Fullstack Developer',
         'cv_link' => 'static/CV_Igfirlii_Nuur_Aziiza.pdf',
         'photo_url' => 'static/pixel-art.jpg', 
         'cat_gif' => 'static/thedailysnark-cat-8915.gif',
