@@ -110,7 +110,7 @@ function getPortfolioData(): array
                 'desc' => 'Sistem berbasis website untuk mendeteksi blackspot dan kualitas warna udang secara instan menggunakan teknologi Computer Vision.',
                 'url' => 'https://igfirli-deteksi-udang-yolo.hf.space',
                 'image' => 'static/msib.jpg'
-                'github' => 'null,'
+                'github' => 'null',
                 'pipeline' => [
                     ['step' => '01', 'label' => 'Input Gambar Udang', 'sub' => 'upload via web'],
                     ['step' => '02', 'label' => 'Resize 640x640', 'sub' => 'preprocessing'],
