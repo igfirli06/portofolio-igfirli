@@ -1,4 +1,6 @@
 <?php
+// Halaman detail project (gaya halaman berita): project.php?id=0, project.php?id=1, dst.
+// id = urutan project di data.php (mulai dari 0)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -12,7 +14,13 @@ $data     = function_exists('getPortfolioData') ? getPortfolioData() : [];
 $projects = $data['projects'] ?? [];
 $total    = count($projects);
 
-$id      = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+// Alamat: /project/0 (diarahkan vercel.json ke api/project.php?id=0)
+$rawId = $_GET['id'] ?? null;
+if ($rawId === null && preg_match('~/project/(\d+)~', $_SERVER['REQUEST_URI'] ?? '', $mUri)) {
+    $rawId = $mUri[1]; // cadangan jika query string tidak terbawa
+}
+$id      = filter_var($rawId, FILTER_VALIDATE_INT);
+if ($id === false) { $id = null; }
 $project = ($id !== null && $id !== false && isset($projects[$id])) ? $projects[$id] : null;
 
 if ($project === null) {
@@ -22,7 +30,10 @@ if ($project === null) {
 $prevId = ($project !== null && $id > 0) ? $id - 1 : null;
 $nextId = ($project !== null && $id < $total - 1) ? $id + 1 : null;
 
-
+// ===== VIDEO (opsional) =====
+// Di data.php isi key 'video' dengan:
+//  - link YouTube  (watch?v=..., youtu.be/..., embed/..., shorts/...)
+//  - atau file video, contoh: 'static/video-udang.mp4'
 $videoSrc  = trim($project['video'] ?? '');
 $videoType = null; // 'youtube' | 'file'
 $youtubeId = null;
@@ -33,6 +44,10 @@ if ($videoSrc !== '') {
         $youtubeId = $m[1];
     } else {
         $videoType = 'file';
+        // Halaman ini ada di /project/N, jadi path relatif harus diawali "/"
+        if (!preg_match('~^(https?:)?//~', $videoSrc) && $videoSrc[0] !== '/') {
+            $videoSrc = '/' . $videoSrc;
+        }
     }
 }
 
@@ -66,8 +81,8 @@ $articleParagraphs = $project['article'] ?? [];
     <!-- NAV -->
     <nav class="sticky top-0 z-50 bg-[#1e2749] border-4 border-black brutal-shadow-sm mb-8 px-4 py-3 sm:px-6 sm:py-4">
         <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-white font-bold text-xs sm:text-sm tracking-wider uppercase">
-            <a href="index.php#projects" class="hover:text-[#e09f3e] transition-colors">← Kembali ke Projects</a>
-            <a href="index.php" class="hover:text-[#e09f3e] transition-colors">Home</a>
+            <a href="/#projects" class="hover:text-[#e09f3e] transition-colors">← Kembali ke Projects</a>
+            <a href="/" class="hover:text-[#e09f3e] transition-colors">Home</a>
         </div>
     </nav>
 
@@ -78,7 +93,7 @@ $articleParagraphs = $project['article'] ?? [];
         <section class="bg-white border-4 border-black p-6 md:p-10 brutal-shadow text-center space-y-4">
             <h1 class="text-3xl md:text-5xl font-black uppercase text-black">Project tidak ditemukan</h1>
             <p class="text-base md:text-lg text-gray-800 font-medium">Halaman project yang kamu cari tidak ada.</p>
-            <a href="index.php#projects" class="inline-block bg-[#e09f3e] text-black font-bold uppercase px-6 py-3 border-4 border-black brutal-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+            <a href="/#projects" class="inline-block bg-[#e09f3e] text-black font-bold uppercase px-6 py-3 border-4 border-black brutal-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                 ← Kembali ke Projects
             </a>
         </section>
@@ -157,13 +172,13 @@ $articleParagraphs = $project['article'] ?? [];
         <!-- PREV / NEXT -->
         <nav class="flex flex-col sm:flex-row justify-between gap-4 mt-12 pt-8 border-t-4 border-black">
             <?php if ($prevId !== null): ?>
-            <a href="project.php?id=<?= $prevId ?>" class="bg-white text-black font-bold uppercase text-xs md:text-sm px-4 py-3 border-4 border-black brutal-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+            <a href="/project/<?= $prevId ?>" class="bg-white text-black font-bold uppercase text-xs md:text-sm px-4 py-3 border-4 border-black brutal-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                 ← <?= htmlspecialchars($projects[$prevId]['title'] ?? 'Sebelumnya') ?>
             </a>
             <?php else: ?><span></span><?php endif; ?>
 
             <?php if ($nextId !== null): ?>
-            <a href="project.php?id=<?= $nextId ?>" class="bg-[#e09f3e] text-black font-bold uppercase text-xs md:text-sm px-4 py-3 border-4 border-black brutal-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all sm:text-right">
+            <a href="/project/<?= $nextId ?>" class="bg-[#e09f3e] text-black font-bold uppercase text-xs md:text-sm px-4 py-3 border-4 border-black brutal-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all sm:text-right">
                 <?= htmlspecialchars($projects[$nextId]['title'] ?? 'Berikutnya') ?> →
             </a>
             <?php endif; ?>
