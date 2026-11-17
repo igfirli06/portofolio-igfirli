@@ -43,29 +43,44 @@ function getPortfolioData(): array
             ],
         ],
         'skills' => [
-            'AWS & Cloud Computing' => [
-                ['name' => 'AWS re/Start Graduate', 'details' => 'Lulusan program pelatihan intensif AWS Cloud Computing (Batch 15, Agustus - Oktober 2026).'],
-                ['name' => 'Amazon EC2', 'details' => 'Konfigurasi instance server Linux/Windows, Security Groups, Key Pairs, dan manajemen web server.'],
-                ['name' => 'Amazon S3', 'details' => 'Manajemen bucket, pengelolaan objek, static website hosting, dan kebijakan keamanan akses (Bucket Policy).'],
-                ['name' => 'Amazon VPC', 'details' => 'Perancangan arsitektur jaringan terisolasi: Public/Private Subnet, Internet Gateway, dan Route Tables.'],
-                ['name' => 'AWS IAM', 'details' => 'Manajemen hak akses aman menggunakan User, Role, Policy, dan prinsip Least Privilege.'],
-                ['name' => 'Amazon RDS & DynamoDB', 'details' => 'Pengelolaan basis data relasional (RDS) dan basis data NoSQL berkinerja tinggi (DynamoDB).'],
-                ['name' => 'AWS CloudFormation', 'details' => 'Implementasi Infrastructure as Code (IaC) menggunakan template otomatisasi.'],
-                ['name' => 'AWS CLI & Systems Manager', 'details' => 'Otomasi dan manajemen operasional layanan cloud secara terpusat via command-line.'],
-                ['name' => 'Amazon SNS & EFS', 'details' => 'Pengaturan layanan notifikasi berbasis event dan penyimpanan file sistem terdistribusi (EFS).']
-            ],
-            'AI & Computer Vision' => [
-                ['name' => 'OpenCV', 'details' => 'Versi: 4.x. Penggunaan: Image Processing, Color Extraction (HSV, CIELab, RGB) untuk deteksi warna.'],
-                ['name' => 'YOLO', 'details' => 'Versi: YOLOv8. Penggunaan: Object Detection & Tracking untuk sistem pemantauan area.'],
-                ['name' => 'Scikit-Learn (KNN)', 'details' => 'Penggunaan: Implementasi Weighted KNN (WKNN) Classifier untuk sistem klasifikasi.'],
-                ['name' => 'NumPy / Pandas', 'details' => 'Penggunaan: Manipulasi data dan operasi komputasi matriks/array berkinerja tinggi.']
-            ],
-            'Backend & Database' => [
-                ['name' => 'Python (Flask & FastAPI)', 'details' => 'Penggunaan: Membangun backend, microservices, dan sistem real-time dashboard.'],
-                ['name' => 'PostgreSQL & MySQL', 'details' => 'Penggunaan: Relational database management system untuk menyimpan data sistem.'],
-                ['name' => 'SQLAlchemy', 'details' => 'Penggunaan: Object Relational Mapper (ORM) untuk interaksi database yang efisien.'],
-                ['name' => 'REST API & Git', 'details' => 'Desain komunikasi data JSON, version control, dan kolaborasi manajemen kode repo.']
-            ],
+        'AWS & Cloud Computing' => [
+            ['name' => 'AWS re/Start Graduate', 'details' => 'Lulusan program pelatihan intensif AWS Cloud Computing (Batch 15, Agustus - Oktober 2026).'],
+            ['name' => 'Amazon EC2', 'details' => 'Konfigurasi instance server Linux/Windows, Security Groups, Key Pairs, dan manajemen web server.'],
+            ['name' => 'Amazon S3', 'details' => 'Manajemen bucket, pengelolaan objek, static website hosting, dan kebijakan keamanan akses (Bucket Policy).'],
+            ['name' => 'Amazon VPC', 'details' => 'Perancangan arsitektur jaringan terisolasi: Public/Private Subnet, Internet Gateway, dan Route Tables.'],
+            ['name' => 'AWS IAM', 'details' => 'Manajemen hak akses aman menggunakan User, Role, Policy, dan prinsip Least Privilege.'],
+            ['name' => 'Amazon RDS & DynamoDB', 'details' => 'Pengelolaan basis data relasional (RDS) dan basis data NoSQL berkinerja tinggi (DynamoDB).'],
+            ['name' => 'AWS CloudFormation', 'details' => 'Implementasi Infrastructure as Code (IaC) menggunakan template otomatisasi.'],
+            ['name' => 'AWS CLI & Systems Manager', 'details' => 'Otomasi dan manajemen operasional layanan cloud secara terpusat via command-line.'],
+            ['name' => 'Amazon SNS & EFS', 'details' => 'Pengaturan layanan notifikasi berbasis event dan penyimpanan file sistem terdistribusi (EFS).']
+        ],
+        'AI & Computer Vision' => [
+            ['name' => 'OpenCV', 'details' => 'Versi: 4.x. Penggunaan: Image Processing, Color Extraction (HSV, CIELab, RGB) untuk deteksi warna.'],
+            ['name' => 'YOLO', 'details' => 'Versi: YOLOv8. Penggunaan: Object Detection & Tracking untuk sistem pemantauan area.'],
+            ['name' => 'Scikit-Learn (KNN)', 'details' => 'Penggunaan: Implementasi Weighted KNN (WKNN) Classifier untuk sistem klasifikasi.'],
+            ['name' => 'Machine Learning', 'details' => 'Penggunaan: Klasifikasi dan pengolahan data untuk sistem berbasis AI.'],
+            ['name' => 'NumPy / Pandas', 'details' => 'Penggunaan: Manipulasi data dan operasi komputasi matriks/array berkinerja tinggi.']
+        ],
+        'Backend & Database' => [
+            ['name' => 'Python (Flask, Django & FastAPI)', 'details' => 'Penggunaan: Membangun backend, microservices, dan sistem real-time dashboard.'],
+            ['name' => 'REST API & API Integration', 'details' => 'Desain komunikasi data JSON, pengembangan REST API, dan integrasi antar layanan.'],
+            ['name' => 'PostgreSQL & MySQL', 'details' => 'Penggunaan: Relational database management system untuk menyimpan data sistem.'],
+            ['name' => 'Relational Database Design', 'details' => 'Perancangan skema basis data relasional untuk aplikasi berbasis database (Database-Driven Applications).'],
+            ['name' => 'SQLAlchemy', 'details' => 'Penggunaan: Object Relational Mapper (ORM) untuk interaksi database yang efisien.']
+        ],
+        'Frontend Development' => [
+            ['name' => 'HTML5', 'details' => 'Penggunaan: Membangun struktur halaman web yang semantik.'],
+            ['name' => 'Tailwind CSS', 'details' => 'Penggunaan: Styling antarmuka dengan utility-first CSS, termasuk portofolio ini.'],
+            ['name' => 'Responsive Web Design', 'details' => 'Penggunaan: Tampilan web yang menyesuaikan berbagai ukuran layar (HP, tablet, desktop).'],
+            ['name' => 'JavaScript', 'details' => 'Penggunaan: Interaksi sisi klien seperti modal, animasi, dan manipulasi DOM.']
+        ],
+        'Development Tools' => [
+            ['name' => 'Git & GitHub', 'details' => 'Version control dan kolaborasi manajemen kode repositori.'],
+            ['name' => 'VS Code', 'details' => 'Penggunaan: Code editor utama untuk pengembangan Python dan web.'],
+            ['name' => 'Postman', 'details' => 'Penggunaan: Pengujian dan dokumentasi endpoint REST API.'],
+            ['name' => 'Figma', 'details' => 'Penggunaan: Perancangan desain antarmuka (UI) sebelum implementasi.'],
+            ['name' => 'Claude (AI Tools)', 'details' => 'Penggunaan: Asisten AI untuk membantu proses pengembangan dan pemecahan masalah.']
+        ],
         ],
         'projects' => [
             [
