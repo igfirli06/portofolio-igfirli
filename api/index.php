@@ -76,12 +76,24 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
             width: clamp(1rem, 3vh, 1.5rem) !important;
             height: clamp(1rem, 3vh, 1.5rem) !important;
         }
+
+        /* ===== RESPONSIVE ===== */
+        /* HP: bayangan brutal dikecilkan supaya tidak memakan ruang */
+        @media (max-width: 640px) {
+            .brutal-shadow { box-shadow: 5px 5px 0px 0px #000000; }
+            .brutal-shadow-sm { box-shadow: 3px 3px 0px 0px #000000; }
+            .brutal-shadow-lg { box-shadow: 7px 7px 0px 0px #000000; }
+        }
+        /* HP posisi landscape (layar pendek): hero boleh lebih tinggi dari layar agar isi tidak terpotong */
+        @media (max-height: 520px) and (orientation: landscape) {
+            .hero-fit { height: auto !important; min-height: calc(100dvh - 6rem) !important; padding-top: 2rem !important; padding-bottom: 2rem !important; }
+        }
     </style>
 </head>
 <body class="text-[#540b0e] antialiased selection:bg-[#9e2a2b] selection:text-white p-4 md:p-8 overflow-x-hidden">
 
-    <nav class="sticky top-0 z-50 bg-[#1e2749] border-4 border-black brutal-shadow-sm mb-6 px-6 py-4">
-    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-4 md:gap-x-8 gap-y-2 text-white font-bold text-sm tracking-wider uppercase">
+    <nav class="sticky top-0 z-50 bg-[#1e2749] border-4 border-black brutal-shadow-sm mb-6 px-4 py-3 sm:px-6 sm:py-4">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-4 md:gap-x-8 gap-y-2 text-white font-bold text-xs sm:text-sm tracking-wider uppercase">
         <a href="#about" class="hover:text-[#e09f3e] transition-colors">ABOUT</a>
         <span class="text-gray-400 font-normal">|</span>
         <a href="#skills" class="hover:text-[#e09f3e] transition-colors">TECH STACK</a>
@@ -93,28 +105,28 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
 </nav>
 
     <!-- HERO HEADER -->
-    <header id="hero" class="hero-fit relative w-full bg-[#335c67] border-4 border-black brutal-shadow-lg flex items-center justify-center mb-16 overflow-hidden">
+    <header id="hero" class="hero-fit relative w-full bg-[#335c67] border-4 border-black brutal-shadow-lg flex items-center justify-center mb-10 md:mb-16 overflow-hidden">
         <div class="absolute inset-0 hero-bg bg-cover bg-center opacity-20 filter grayscale"></div>
-        <div class="relative z-10 text-center max-w-3xl">
+        <div class="relative z-10 text-center max-w-3xl w-full">
             <span class="hero-badge inline-block bg-[#e09f3e] text-black text-sm font-bold uppercase tracking-wider px-4 py-2 border-2 border-black brutal-shadow-sm -rotate-2 mb-6">
                 Available for Hire // 2026
             </span>
-            <h1 class="hero-title text-5xl md:text-8xl font-black text-[#fff3b0] uppercase tracking-tighter leading-none mb-6 border-4 border-black bg-[#540b0e] p-6 brutal-shadow rotate-1">
+            <h1 class="hero-title text-4xl sm:text-5xl md:text-8xl font-black text-[#fff3b0] uppercase tracking-tighter leading-none mb-6 border-4 border-black bg-[#540b0e] p-4 sm:p-6 brutal-shadow rotate-1 break-words">
                 <?= htmlspecialchars($data['name'] ?? 'Your Name') ?>
             </h1>
-            <div class="hero-role-box bg-white border-4 border-black p-4 brutal-shadow -rotate-1 inline-block mb-8">
-                <p class="hero-role text-xl md:text-2xl font-bold text-black uppercase">
+            <div class="hero-role-box bg-white border-4 border-black p-3 sm:p-4 brutal-shadow -rotate-1 inline-block mb-8 max-w-full">
+                <p class="hero-role text-base sm:text-xl md:text-2xl font-bold text-black uppercase">
                     [ <?= htmlspecialchars($data['role'] ?? 'Software Engineer') ?> ]
                 </p>
             </div>
 
             <!-- ACTION BUTTONS -->
-            <div class="hero-actions flex flex-wrap justify-center gap-4 mb-8">
-                <a href="#about" class="hero-btn inline-block bg-[#9e2a2b] text-[#fff3b0] text-xl font-bold uppercase px-8 py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+            <div class="hero-actions flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
+                <a href="#about" class="hero-btn inline-block bg-[#9e2a2b] text-[#fff3b0] text-base sm:text-xl font-bold uppercase px-5 py-3 sm:px-8 sm:py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
                     Let's Build.exe →
                 </a>
                 <?php if (!empty($data['cv_link'])): ?>
-                <a href="<?= htmlspecialchars($data['cv_link']) ?>" target="_blank" download class="hero-btn inline-block bg-[#e09f3e] text-black text-xl font-bold uppercase px-8 py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+                <a href="<?= htmlspecialchars($data['cv_link']) ?>" target="_blank" download class="hero-btn inline-block bg-[#e09f3e] text-black text-base sm:text-xl font-bold uppercase px-5 py-3 sm:px-8 sm:py-4 border-4 border-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
                     📄 Download CV (PDF)
                 </a>
                 <?php endif; ?>
@@ -136,25 +148,25 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="max-w-5xl mx-auto space-y-24 pb-20">
+    <main class="max-w-5xl mx-auto space-y-16 md:space-y-24 pb-16 md:pb-20">
 
         <!-- ABOUT SECTION WITH PHOTO -->
-        <section id="about" class="scroll-mt-24 grid grid-cols-1 md:grid-cols-12 items-stretch">
+        <section id="about" class="scroll-mt-28 md:scroll-mt-24 grid grid-cols-1 md:grid-cols-12 items-stretch gap-8 md:gap-0">
             
             <!-- FOTO SAYA (KIRI) -->
-            <div class="md:col-span-4 bg-white border-4 border-black brutal-shadow relative min-h-[256px]">
+            <div class="md:col-span-4 bg-white border-4 border-black brutal-shadow relative min-h-[220px] sm:min-h-[256px]">
                  <img src="<?= htmlspecialchars($data['photo_url'] ?? 'pixel-art.jpg') ?>" 
                       alt="Foto Profil Pixel Art" 
                       class="absolute inset-0 w-full h-full object-cover">
             </div>
 
             <!-- ABOUT ME (KANAN) -->
-            <div class="md:col-span-8 bg-white border-4 border-black p-8 brutal-shadow relative flex flex-col justify-center">
-                <div class="absolute -top-6 left-6 bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+            <div class="md:col-span-8 bg-white border-4 border-black p-6 md:p-8 brutal-shadow relative flex flex-col justify-center">
+                <div class="absolute -top-6 left-4 sm:left-6 bg-[#9e2a2b] text-[#fff3b0] px-3 sm:px-4 py-1 border-2 border-black font-bold uppercase text-xs sm:text-sm brutal-shadow-sm">
                     01 Who Am I?
                 </div>
-                <h2 class="text-3xl font-black uppercase text-black mb-4 mt-2">About Me</h2>
-                <p class="text-lg leading-relaxed text-gray-800 font-medium">
+                <h2 class="text-2xl md:text-3xl font-black uppercase text-black mb-4 mt-2">About Me</h2>
+                <p class="text-base md:text-lg leading-relaxed text-gray-800 font-medium">
                     <?= htmlspecialchars($data['about'] ?? 'Data profil sedang disiapkan...') ?>
                 </p>
             </div>
@@ -162,16 +174,16 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
         </section>
 
         <!-- SKILLS SECTION -->
-        <section id="skills" class="scroll-mt-24 space-y-6">
-            <div class="inline-block bg-[#e09f3e] text-black px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+        <section id="skills" class="scroll-mt-28 md:scroll-mt-24 space-y-6">
+            <div class="inline-block bg-[#e09f3e] text-black px-4 py-1 border-2 border-black font-bold uppercase text-xs sm:text-sm brutal-shadow-sm">
                 02 Tech Stack
             </div>
-            <h2 class="text-4xl font-black uppercase text-black">Technical Expertise</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h2 class="text-3xl md:text-4xl font-black uppercase text-black">Technical Expertise</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php foreach (($data['skills'] ?? []) as $category => $items): ?>
-                <div class="bg-white border-4 border-black p-6 brutal-shadow flex flex-col justify-between">
+                <div class="bg-white border-4 border-black p-5 md:p-6 brutal-shadow flex flex-col justify-between">
                     <div>
-                        <h3 class="text-xl font-black uppercase text-[#540b0e] border-b-4 border-black pb-2 mb-4">
+                        <h3 class="text-lg md:text-xl font-black uppercase text-[#540b0e] border-b-4 border-black pb-2 mb-4">
                             <?= htmlspecialchars($category) ?>
                         </h3>
                         <ul class="space-y-3">
@@ -196,7 +208,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
 
         <!-- SKILL MODAL (POPUP) -->
         <div id="skill-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
-            <div class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow-lg max-w-md w-full relative transform scale-95 transition-transform duration-300" id="skill-modal-content">
+            <div class="bg-white border-4 border-black p-5 sm:p-6 md:p-8 brutal-shadow-lg max-w-md w-full relative transform scale-95 transition-transform duration-300" id="skill-modal-content">
                 <button onclick="closeSkillModal()" class="absolute -top-4 -right-4 bg-[#9e2a2b] text-[#fff3b0] border-4 border-black w-10 h-10 flex items-center justify-center font-black text-xl hover:translate-x-1 hover:translate-y-1 brutal-shadow-sm transition-all z-10">
                     X
                 </button>
@@ -204,10 +216,10 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                 <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-3 py-1 border-2 border-black font-bold uppercase text-xs mb-3">
                     Tech Details
                 </div>
-                <h3 id="modal-skill-title" class="text-3xl font-black uppercase text-black border-b-4 border-black pb-2 mb-4">
+                <h3 id="modal-skill-title" class="text-2xl md:text-3xl font-black uppercase text-black border-b-4 border-black pb-2 mb-4 break-words">
                     Skill Name
                 </h3>
-                <p id="modal-skill-details" class="text-gray-800 font-medium text-lg leading-relaxed">
+                <p id="modal-skill-details" class="text-gray-800 font-medium text-base md:text-lg leading-relaxed">
                     Detail description goes here.
                 </p>
             </div>
@@ -253,13 +265,13 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
             });
         </script>
 <!-- CERTIFICATES SECTION -->
-        <section id="certificates" class="scroll-mt-24 space-y-6">
-            <div class="inline-block bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
+        <section id="certificates" class="scroll-mt-28 md:scroll-mt-24 space-y-6">
+            <div class="inline-block bg-[#9e2a2b] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-xs sm:text-sm brutal-shadow-sm">
                 03 Licenses & Certifications
             </div>
-            <h2 class="text-4xl font-black uppercase text-black">Certifications</h2>
+            <h2 class="text-3xl md:text-4xl font-black uppercase text-black">Certifications</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <?php foreach (($data['certificates'] ?? []) as $cert): ?>
                 <div class="bg-white border-4 border-black brutal-shadow flex flex-col justify-between overflow-hidden hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                     <!-- GAMBAR SERTIFIKAT -->
@@ -270,12 +282,12 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                     </div>
 
                     <!-- DESKRIPSI CARD -->
-                    <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+                    <div class="p-5 md:p-6 flex flex-col flex-grow justify-between space-y-4">
                         <div>
                             <span class="inline-block bg-[#e09f3e] text-black text-xs font-bold uppercase px-2 py-0.5 border border-black mb-2">
                                 <?= htmlspecialchars($cert['date']) ?>
                             </span>
-                            <h3 class="text-xl font-black uppercase text-black leading-tight">
+                            <h3 class="text-lg md:text-xl font-black uppercase text-black leading-tight">
                                 <?= htmlspecialchars($cert['title']) ?>
                             </h3>
                             <p class="text-sm font-bold text-gray-600 mt-1">
@@ -295,28 +307,33 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                 <?php endforeach; ?>
             </div>
         </section>
+
         <!-- PROJECTS SECTION -->
-<section id="projects"  class="scroll-mt-24 space-y-8">
-    <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-sm brutal-shadow-sm">
-        03 Selected Projects
+<section id="projects" class="scroll-mt-28 md:scroll-mt-24 space-y-8">
+    <div class="inline-block bg-[#540b0e] text-[#fff3b0] px-4 py-1 border-2 border-black font-bold uppercase text-xs sm:text-sm brutal-shadow-sm">
+        04 Selected Projects
     </div>
     <h2 class="text-3xl md:text-4xl font-black uppercase text-black">Production Code</h2>
     
-    <div class="space-y-12">
+    <div class="space-y-10 md:space-y-12">
         <?php foreach (($data['projects'] ?? []) as $index => $project): ?>
-        <article class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow space-y-6">
+        <!-- Seluruh card bisa diklik -> project.php?id=... (lihat link di judul) -->
+        <article class="group relative bg-white border-4 border-black p-5 md:p-8 brutal-shadow space-y-5 md:space-y-6 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none">
             
             <!-- HEADER PROJECT -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b-4 border-black pb-4">
-                <div class="space-y-1">
+                <div class="space-y-1 min-w-0">
                     <span class="text-xs font-bold uppercase tracking-widest text-[#335c67]">Project #0<?= $index + 1 ?></span>
-                    <!-- Font size disesuaikan agar tidak melar/sesak -->
-                    <h3 class="text-xl md:text-2xl font-black uppercase text-black leading-tight">
-                        <?= htmlspecialchars($project['title'] ?? 'Unknown Project') ?>
+                    <h3 class="text-xl md:text-2xl font-black uppercase text-black leading-tight break-words">
+                        <a href="project.php?id=<?= (int)$index ?>"
+                           class="group-hover:text-[#9e2a2b] after:content-[''] after:absolute after:inset-0 focus-visible:outline focus-visible:outline-4 focus-visible:outline-[#e09f3e]">
+                            <?= htmlspecialchars($project['title'] ?? 'Unknown Project') ?>
+                        </a>
                     </h3>
                 </div>
                 
-                <div class="flex flex-wrap gap-2 flex-shrink-0">
+                <!-- relative z-10 supaya tombol ini tetap bisa diklik di atas area klik card -->
+                <div class="relative z-10 flex flex-wrap gap-2 flex-shrink-0">
                     <?php if (!empty($project['url'])): ?>
                     <a href="<?= htmlspecialchars($project['url']) ?>" target="_blank" class="bg-[#e09f3e] text-black font-bold text-xs md:text-sm uppercase px-4 py-2 border-2 border-black brutal-shadow-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-1">
                         🌐 Live App
@@ -331,12 +348,12 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
             </div>
 
             <!-- DESKRIPSI -->
-            <p class="text-base md:text-lg leading-relaxed text-gray-800 font-medium">
+            <p class="text-sm sm:text-base md:text-lg leading-relaxed text-gray-800 font-medium">
                 <?= htmlspecialchars($project['desc'] ?? '') ?>
             </p>
 
             <!-- TECH STACK BADGE -->
-            <div class="bg-[#fff3b0] border-2 border-black p-3 font-mono text-xs md:text-sm font-bold text-[#540b0e]">
+            <div class="bg-[#fff3b0] border-2 border-black p-3 font-mono text-xs md:text-sm font-bold text-[#540b0e] break-words">
                 ⚡ TECH: <?= htmlspecialchars($project['tech'] ?? '') ?>
             </div>
 
@@ -348,7 +365,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
                 <!-- Layout responsif: 1 kolom di HP, Flex/Grid leluasa di layar sedang/besar -->
                 <div class="flex flex-col md:flex-row flex-wrap items-stretch justify-between gap-2">
                     <?php foreach ($project['pipeline'] as $pipeIdx => $pipe): ?>
-                    <div class="flex-1 min-w-[140px] bg-gray-50 border-2 border-black p-3 text-center flex flex-col justify-center relative">
+                    <div class="flex-1 md:min-w-[140px] bg-gray-50 border-2 border-black p-3 text-center flex flex-col justify-center relative">
                         <span class="text-xs font-black text-[#9e2a2b] mb-1"><?= htmlspecialchars($pipe['step'] ?? '') ?></span>
                         <span class="font-black text-xs uppercase text-black leading-snug mb-1"><?= htmlspecialchars($pipe['label'] ?? '') ?></span>
                         <span class="text-[10px] text-gray-600 font-medium"><?= htmlspecialchars($pipe['sub'] ?? '') ?></span>
@@ -358,6 +375,13 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
             </div>
             <?php endif; ?>
 
+            <!-- PETUNJUK BISA DIKLIK -->
+            <div class="pt-1 text-right">
+                <span class="inline-block bg-black text-[#fff3b0] font-bold text-xs md:text-sm uppercase px-4 py-2 group-hover:bg-[#9e2a2b] transition-colors">
+                    Baca Selengkapnya →
+                </span>
+            </div>
+
         </article>
         <?php endforeach; ?>
     </div>
@@ -365,7 +389,7 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     </main>
 
     <!-- FOOTER WITH WALKING CAT ANIMATION -->
-    <footer class="relative text-center py-8 border-t-4 border-black text-black font-bold uppercase text-sm bg-[#fff3b0]">
+    <footer class="relative text-center py-6 md:py-8 border-t-4 border-black text-black font-bold uppercase text-xs md:text-sm bg-[#fff3b0]">
         
         <!-- Kucing Berjalan di Atas Garis Border -->
         <div class="absolute bottom-full left-0 animate-walk-right pointer-events-none z-10 -mb-[2px]">
