@@ -23,6 +23,41 @@ $data = function_exists('getPortfolioData') ? getPortfolioData() : [];
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
+        /* ===== HERO PAS SATU LAYAR (hanya ukuran) ===== */
+    .hero-fit {
+        height: calc(100dvh - 8rem);   /* fallback, disempurnakan oleh script di bawah */
+        min-height: 0 !important;
+        padding: clamp(.75rem, 3vh, 3rem) !important;
+    }
+    .hero-fit .hero-badge {
+        font-size: clamp(.65rem, 1.9vh, .875rem) !important;
+        padding: clamp(.25rem, .9vh, .5rem) clamp(.6rem, 2vh, 1rem) !important;
+        margin-bottom: clamp(.5rem, 2.5vh, 1.5rem) !important;
+    }
+    .hero-fit .hero-title {
+        font-size: clamp(1.5rem, min(7.5vh, 11vw), 6rem) !important;
+        padding: clamp(.5rem, 2.2vh, 1.5rem) !important;
+        margin-bottom: clamp(.5rem, 2.5vh, 1.5rem) !important;
+    }
+    .hero-fit .hero-role-box {
+        padding: clamp(.4rem, 1.6vh, 1rem) !important;
+        margin-bottom: clamp(.5rem, 3vh, 2rem) !important;
+    }
+    .hero-fit .hero-role { font-size: clamp(.85rem, 3vh, 1.5rem) !important; }
+    .hero-fit .hero-actions {
+        gap: clamp(.5rem, 1.6vh, 1rem) !important;
+        margin-bottom: clamp(.5rem, 2.5vh, 2rem) !important;
+    }
+    .hero-fit .hero-btn {
+        font-size: clamp(.8rem, 2.6vh, 1.25rem) !important;
+        padding: clamp(.4rem, 1.8vh, 1rem) clamp(.8rem, 3vh, 2rem) !important;
+    }
+    .hero-fit .hero-social { margin-top: 0 !important; }
+    .hero-fit .hero-social a { padding: clamp(.4rem, 1.4vh, .75rem) !important; }
+    .hero-fit .hero-social svg {
+        width: clamp(1rem, 3vh, 1.5rem) !important;
+        height: clamp(1rem, 3vh, 1.5rem) !important;
+    }
         body { font-family: 'Space Grotesk', sans-serif; background-color: #fff3b0; }
         h1, h2, h3 { font-family: 'Syne', sans-serif; }
         .brutal-shadow { box-shadow: 8px 8px 0px 0px #000000; }
