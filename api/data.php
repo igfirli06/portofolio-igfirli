@@ -25,7 +25,7 @@ function getPortfolioData(): array
                 'issuer' => 'Amazon Web Services (AWS)',
                 'date' => '2026',
                 'image' => 'static/aws-restart-cert.png', 
-                'credential_url' => 'https://youtu.be/jqLnCKuE46E?si=HBwUdELO8dodVrJX' 
+                'credential_url' => '#' 
             ],
             [
                 'title' => 'Magang Wajib',
